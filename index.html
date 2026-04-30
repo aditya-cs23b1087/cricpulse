@@ -13,7 +13,20 @@
 <a href="#main" class="skip-link">Skip to main content</a>
 
 <!-- Top Bar - Reciprocity -->
-<div class="top-bar">🏏 Welcome to CricPulse! Your #1 Cricket Destination — <strong>2.4M+ fans</strong> trust us</div>
+<div class="top-bar" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; padding: 8px 32px;">
+  <div>🏏 Welcome to CricPulse! Your #1 Cricket Destination</div>
+  <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
+    <a href="search.html" style="color:#fff; text-decoration:none;"><i class="fas fa-search"></i> Search</a>
+    <a href="fanzone.html" style="color:#fff; text-decoration:none;"><i class="fas fa-users"></i> Fan Zone</a>
+    <a href="store.html" style="color:#fff; text-decoration:none;"><i class="fas fa-shopping-cart"></i> Store</a>
+    <a href="tickets.html" style="color:#fff; text-decoration:none;"><i class="fas fa-ticket-alt"></i> Tickets</a>
+    <a href="rankings.html" style="color:#fff; text-decoration:none;"><i class="fas fa-chart-bar"></i> Rankings</a>
+    <a href="archive.html" style="color:#fff; text-decoration:none;"><i class="fas fa-history"></i> Archives</a>
+    <a href="team.html" style="color:#fff; text-decoration:none;"><i class="fas fa-flag"></i> Teams</a>
+    <a href="premium.html" style="color:var(--primary); background:var(--gold); padding:2px 8px; border-radius:4px; text-decoration:none; font-weight:bold;"><i class="fas fa-crown"></i> Premium</a>
+    <a href="auth.html" style="color:#fff; text-decoration:none;"><i class="fas fa-user"></i> Login</a>
+  </div>
+</div>
 
 <!-- Navbar -->
 <nav class="navbar" role="navigation" aria-label="Main navigation">
@@ -34,21 +47,7 @@
   <a href="standings.html" class="nav-link" role="menuitem">Standings</a>
   <a href="videos.html" class="nav-link" role="menuitem">Videos</a>
   <a href="fantasy.html" class="nav-link" role="menuitem">Fantasy</a>
-  <div class="nav-dropdown" style="position:relative; display:inline-block;">
-    <a href="#" class="nav-link" onclick="document.getElementById('more-menu').style.display = document.getElementById('more-menu').style.display === 'none' ? 'block' : 'none'; event.preventDefault();">More <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
-    <div id="more-menu" style="display:none; position:absolute; top:100%; right:0; background:var(--card); box-shadow:var(--shadow); border-radius:var(--radius); padding:8px 0; min-width:180px; z-index:1000; border:1px solid var(--border); text-align:left;">
-      <a href="search.html" style="display:block; padding:10px 16px; color:var(--text); text-decoration:none; font-size:14px;"><i class="fas fa-search" style="width:20px; color:var(--primary);"></i> Search</a>
-      <a href="fanzone.html" style="display:block; padding:10px 16px; color:var(--text); text-decoration:none; font-size:14px;"><i class="fas fa-users" style="width:20px; color:var(--primary);"></i> Fan Zone</a>
-      <a href="store.html" style="display:block; padding:10px 16px; color:var(--text); text-decoration:none; font-size:14px;"><i class="fas fa-shopping-cart" style="width:20px; color:var(--primary);"></i> Store</a>
-      <a href="tickets.html" style="display:block; padding:10px 16px; color:var(--text); text-decoration:none; font-size:14px;"><i class="fas fa-ticket-alt" style="width:20px; color:var(--primary);"></i> Tickets</a>
-      <a href="rankings.html" style="display:block; padding:10px 16px; color:var(--text); text-decoration:none; font-size:14px;"><i class="fas fa-chart-bar" style="width:20px; color:var(--primary);"></i> Rankings</a>
-      <a href="archive.html" style="display:block; padding:10px 16px; color:var(--text); text-decoration:none; font-size:14px;"><i class="fas fa-history" style="width:20px; color:var(--primary);"></i> Archives</a>
-      <a href="team.html" style="display:block; padding:10px 16px; color:var(--text); text-decoration:none; font-size:14px;"><i class="fas fa-flag" style="width:20px; color:var(--primary);"></i> Teams</a>
-      <div style="height:1px; background:var(--border); margin:8px 0;"></div>
-      <a href="premium.html" style="display:block; padding:10px 16px; color:#D4AF37; text-decoration:none; font-size:14px; font-weight:bold;"><i class="fas fa-crown" style="width:20px;"></i> Premium</a>
-      <a href="auth.html" style="display:block; padding:10px 16px; color:var(--text); text-decoration:none; font-size:14px;"><i class="fas fa-user" style="width:20px; color:var(--primary);"></i> Login</a>
-    </div>
-  </div>
+  
 </div>
 </nav>
 
