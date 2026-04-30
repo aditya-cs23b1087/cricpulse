@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Help & Support - CricPulse</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+.faq-item { border:1px solid var(--border);border-radius:var(--radius-sm);margin-bottom:8px;overflow:hidden; }
+.faq-q { padding:14px 18px;font-size:14px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background 0.2s; }
+.faq-q:hover { background:var(--bg); }
+.faq-a { padding:0 18px;max-height:0;overflow:hidden;transition:all 0.3s;font-size:13px;color:var(--text-muted);line-height:1.7; }
+.faq-item.open .faq-a { max-height:200px;padding:0 18px 14px; }
+.faq-item.open .faq-q .arrow { transform:rotate(180deg); }
+.arrow { transition:transform 0.2s;color:var(--text-muted); }
+.help-card { display:flex;flex-direction:column;align-items:center;text-align:center;padding:28px 20px;gap:12px;cursor:pointer; }
+.help-icon { width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff; }
+.chat-container { background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;max-width:400px; }
+.chat-header { background:var(--primary);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:10px; }
+.chat-messages { height:260px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px; }
+.chat-msg { max-width:80%;padding:10px 14px;border-radius:14px;font-size:13px;line-height:1.5; }
+.msg-bot { background:var(--bg);align-self:flex-start;border-bottom-left-radius:4px; }
+.msg-user { background:var(--accent);color:#fff;align-self:flex-end;border-bottom-right-radius:4px; }
+.chat-input { display:flex;gap:8px;padding:12px;border-top:1px solid var(--border); }
+.chat-input input { flex:1;padding:10px 14px;border-radius:var(--radius-full);background:var(--bg);font-size:13px; }
+.chat-input button { width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer; }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="navbar"><div class="nav-top"><a href="index.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-cricket-bat-ball"></i></div>Cric<span>Pulse</span></a><div class="nav-search"><i class="fas fa-search search-icon"></i><input type="search" placeholder="Search..." aria-label="Search"><div id="search-suggestions" style="display:none;position:absolute;top:100%;left:0;right:0;background:var(--card);border-radius:0 0 12px 12px;box-shadow:var(--shadow-hover);z-index:100;"></div></div><div class="nav-actions"><button class="nav-action" onclick="toggleTheme()"><i class="fas fa-moon"></i><span>Theme</span></button></div></div>
+<div class="nav-menu"><a href="index.html" class="nav-link live-link">🏏 Live</a><a href="schedule.html" class="nav-link">Schedule</a><a href="news.html" class="nav-link">News</a><a href="standings.html" class="nav-link">Standings</a><a href="videos.html" class="nav-link">Videos</a><a href="fantasy.html" class="nav-link">Fantasy</a></div></nav>
+
+<main id="main">
+<!-- Hero -->
+<section style="background:linear-gradient(135deg,#0A1628,#1C3454);padding:40px 0;color:#fff;text-align:center;">
+  <div class="container">
+    <div style="font-size:48px;margin-bottom:12px;">💬</div>
+    <h1 style="font-size:32px;font-weight:900;margin-bottom:8px;">Help & Support</h1>
+    <p style="color:rgba(255,255,255,0.6);font-size:14px;">Find answers, get help, or chat with CricBot</p>
+    <span class="hci-tag" style="margin-top:8px;">Nielsen H10: Help & Documentation</span>
+    <span class="hci-tag">User Support Systems</span>
+  </div>
+</section>
+
+<div class="container" style="padding-top:28px;">
+
+<!-- Quick Help Cards - Fitts' Law (large targets) -->
+<div class="grid-4" style="margin-bottom:32px;">
+  <div class="card help-card animate-on-scroll" onclick="showToast('Opening FAQ section...');document.getElementById('faq-section').scrollIntoView({behavior:'smooth'})">
+    <div class="help-icon" style="background:linear-gradient(135deg,#3498DB,#2980B9);"><i class="fas fa-book"></i></div>
+    <h3 style="font-size:14px;font-weight:700;">FAQ</h3>
+    <p style="font-size:12px;color:var(--text-muted);">Common questions answered</p>
+  </div>
+  <div class="card help-card animate-on-scroll" onclick="showToast('Opening chat...');document.getElementById('chat-section').scrollIntoView({behavior:'smooth'})">
+    <div class="help-icon" style="background:linear-gradient(135deg,#00C853,#00963F);"><i class="fas fa-robot"></i></div>
+    <h3 style="font-size:14px;font-weight:700;">CricBot</h3>
+    <p style="font-size:12px;color:var(--text-muted);">AI-powered chat assistant</p>
+  </div>
+  <div class="card help-card animate-on-scroll" onclick="showToast('📧 Email: support@cricpulse.com')">
+    <div class="help-icon" style="background:linear-gradient(135deg,#F4A261,#E76F51);"><i class="fas fa-envelope"></i></div>
+    <h3 style="font-size:14px;font-weight:700;">Email Us</h3>
+    <p style="font-size:12px;color:var(--text-muted);">support@cricpulse.com</p>
+  </div>
+  <div class="card help-card animate-on-scroll" onclick="showToast('⌨️ Press ? for keyboard shortcuts')">
+    <div class="help-icon" style="background:linear-gradient(135deg,#9B59B6,#8E44AD);"><i class="fas fa-keyboard"></i></div>
+    <h3 style="font-size:14px;font-weight:700;">Shortcuts</h3>
+    <p style="font-size:12px;color:var(--text-muted);">D=Theme, /=Search, H=Home</p>
+  </div>
+</div>
+<span class="hci-tag">Fitts' Law: Large touch targets for help</span>
+
+<!-- Two Column: FAQ + Chat -->
+<div style="display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:start;">
+
+<!-- FAQ Section - Contextual Help, Progressive Disclosure -->
+<div id="faq-section">
+  <h2 style="font-size:18px;font-weight:700;margin-bottom:16px;">❓ Frequently Asked Questions <span class="hci-tag">Progressive Disclosure</span></h2>
+
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">How do I follow my favorite team? <i class="fas fa-chevron-down arrow"></i></div>
+    <div class="faq-a">Click the ⭐ star icon on any team's match card or player profile page. Your favorites are saved locally and will appear first in your feed. You can manage them from Settings.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">How does the Fantasy Predictor work? <i class="fas fa-chevron-down arrow"></i></div>
+    <div class="faq-a">Before each match, you can predict the winner, the winning score, and the Man of the Match. Points are awarded based on accuracy. Check the leaderboard to see your ranking!</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">How do I enable Dark Mode? <i class="fas fa-chevron-down arrow"></i></div>
+    <div class="faq-a">Click the moon icon (🌙) in the navbar, or press the <kbd>D</kbd> key on your keyboard. Your preference is saved automatically. You can also change it from the Settings page.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">Are live scores real-time? <i class="fas fa-chevron-down arrow"></i></div>
+    <div class="faq-a">Yes! Our live scores update ball-by-ball with minimal delay. Look for the green "LIVE" badge on match cards. Commentary updates appear instantly in the match detail view.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">How do I use keyboard shortcuts? <i class="fas fa-chevron-down arrow"></i></div>
+    <div class="faq-a">Press <kbd>?</kbd> to see all shortcuts. Key shortcuts: <kbd>D</kbd> = Toggle dark mode, <kbd>/</kbd> = Focus search, <kbd>H</kbd> = Go to home page. Shortcuts work from any page.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-q">How do I change accessibility settings? <i class="fas fa-chevron-down arrow"></i></div>
+    <div class="faq-a">Go to <a href="settings.html" style="color:var(--accent);font-weight:600;">Settings & Accessibility</a> to change font size, contrast mode, reduce animations, and more. We follow WCAG 2.1 AA guidelines.</div>
+  </div>
+</div>
+
+<!-- CricBot Chat - Conversational UI Paradigm -->
+<div id="chat-section">
+  <h2 style="font-size:18px;font-weight:700;margin-bottom:16px;">🤖 Ask CricBot <span class="hci-tag">Conversational UI</span></h2>
+  <div class="chat-container">
+    <div class="chat-header">
+      <div style="width:32px;height:32px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:16px;">🤖</div>
+      <div><div style="font-weight:700;font-size:14px;">CricBot</div><div style="font-size:11px;color:rgba(255,255,255,0.6);">Online • Instant replies</div></div>
+    </div>
+    <div class="chat-messages" id="chat-msgs">
+      <div class="chat-msg msg-bot">👋 Hi! I'm CricBot. Ask me about live scores, player stats, schedules, or anything cricket!</div>
+      <div class="chat-msg msg-bot">Try: "What's the live score?" or "Who has the Orange Cap?"</div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="chat-in" placeholder="Ask CricBot..." aria-label="Chat message" onkeydown="if(event.key==='Enter')sendChat()">
+      <button onclick="sendChat()" aria-label="Send message"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+  <span class="hci-tag" style="margin-top:8px;">Nielsen H10</span>
+  <span class="hci-tag">Contextual Help</span>
+</div>
+
+</div>
+
+<!-- Tooltips Guide -->
+<div class="card card-body" style="margin-top:28px;">
+  <h3 style="font-size:15px;font-weight:700;margin-bottom:10px;">💡 Quick Tips <span class="hci-tag">Law of Learning</span><span class="hci-tag">Learnability</span></h3>
+  <div class="grid-3">
+    <div style="display:flex;gap:10px;align-items:flex-start;"><i class="fas fa-search" style="color:var(--accent);margin-top:3px;"></i><div><div style="font-size:13px;font-weight:600;">Press / to search</div><div style="font-size:12px;color:var(--text-muted);">Jump to search from anywhere</div></div></div>
+    <div style="display:flex;gap:10px;align-items:flex-start;"><i class="fas fa-moon" style="color:var(--accent);margin-top:3px;"></i><div><div style="font-size:13px;font-weight:600;">Press D for dark mode</div><div style="font-size:12px;color:var(--text-muted);">Toggle theme instantly</div></div></div>
+    <div style="display:flex;gap:10px;align-items:flex-start;"><i class="fas fa-star" style="color:var(--gold);margin-top:3px;"></i><div><div style="font-size:13px;font-weight:600;">Star your teams</div><div style="font-size:12px;color:var(--text-muted);">They'll appear first in feeds</div></div></div>
+  </div>
+</div>
+
+</div>
+</main>
+
+<footer style="margin-top:40px;"><div class="container"><div class="footer-bottom"><span>© 2026 CricPulse</span><div class="social-icons"><div class="social-icon"><i class="fab fa-twitter"></i></div><div class="social-icon"><i class="fab fa-youtube"></i></div></div></div></div></footer>
+<div id="toast" class="toast" role="status" aria-live="polite"><i class="fas fa-check-circle" style="color:var(--accent)"></i><span class="toast-msg"></span><button class="undo-btn" style="display:none">Undo</button></div>
+<script src="js/app.js"></script>
+<script>
+function toggleFaq(el) { el.classList.toggle('open'); }
+const botReplies = {
+  'score': '🏏 GT 186/4 (16.2) vs RCB 204/6 (20). GT need 19 from 22 balls!',
+  'orange': '🧡 Travis Head (SRH) leads with 487 runs in 9 matches.',
+  'purple': '💜 Jasprit Bumrah (MI) leads with 18 wickets in 9 matches.',
+  'schedule': '📅 Next: CSK vs DC tonight at 7:30 PM. Check the Schedule page!',
+  'standings': '🏆 SRH tops with 14 pts (7W, 2L). See full table on Standings page.',
+  'default': "🤔 I'm not sure about that. Try asking about live scores, Orange/Purple cap, schedule, or standings!"
+};
+function sendChat() {
+  const input = document.getElementById('chat-in');
+  const msg = input.value.trim();
+  if (!msg) return;
+  const msgs = document.getElementById('chat-msgs');
+  msgs.innerHTML += '<div class="chat-msg msg-user">' + msg + '</div>';
+  input.value = '';
+  const q = msg.toLowerCase();
+  let reply = botReplies.default;
+  if (q.includes('score') || q.includes('live')) reply = botReplies.score;
+  else if (q.includes('orange')) reply = botReplies.orange;
+  else if (q.includes('purple')) reply = botReplies.purple;
+  else if (q.includes('schedule') || q.includes('next')) reply = botReplies.schedule;
+  else if (q.includes('standing') || q.includes('table') || q.includes('point')) reply = botReplies.standings;
+  setTimeout(() => {
+    msgs.innerHTML += '<div class="chat-msg msg-bot">' + reply + '</div>';
+    msgs.scrollTop = msgs.scrollHeight;
+  }, 600);
+}
+</script>
+</body>
+</html>

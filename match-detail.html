@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GT vs RCB Live Score - CricPulse</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="navbar"><div class="nav-top"><a href="index.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-cricket-bat-ball"></i></div>Cric<span>Pulse</span></a><div class="nav-search"><i class="fas fa-search search-icon"></i><input type="search" placeholder="Search..." aria-label="Search"><div id="search-suggestions" style="display:none;position:absolute;top:100%;left:0;right:0;background:var(--card);border-radius:0 0 12px 12px;box-shadow:var(--shadow-hover);z-index:100;"></div></div><div class="nav-actions"><button class="nav-action" onclick="toggleTheme()"><i class="fas fa-moon"></i><span>Theme</span></button><a href="notifications.html" class="nav-action"><i class="fas fa-bell"></i><span>Alerts</span></a><a href="help.html" class="nav-action"><i class="fas fa-question-circle"></i><span>Help</span></a></div></div>
+<div class="nav-menu"><a href="index.html" class="nav-link live-link">🏏 Live</a><a href="schedule.html" class="nav-link">Schedule</a><a href="news.html" class="nav-link">News</a><a href="standings.html" class="nav-link">Standings</a><a href="videos.html" class="nav-link">Videos</a><a href="fantasy.html" class="nav-link">Fantasy</a></div></nav>
+
+<main id="main">
+<!-- Breadcrumbs - Navigation Guidelines -->
+<div class="container"><div class="breadcrumbs"><a href="index.html">Home</a><span class="sep">›</span><a href="schedule.html">IPL 2026</a><span class="sep">›</span><span>GT vs RCB</span> <span class="hci-tag">Navigation Guidelines</span></div></div>
+
+<!-- Live Score Header - Closure, System Status -->
+<section style="background:linear-gradient(135deg,#0A1628,#1C3454);padding:32px 0;color:#fff;">
+<div class="container">
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+    <span class="match-status status-live" style="font-size:12px;padding:4px 14px;">● LIVE</span>
+    <span style="font-size:13px;color:rgba(255,255,255,0.6);">42nd Match • IPL 2026 • Narendra Modi Stadium</span>
+    <span class="hci-tag">Nielsen H1: System Status</span>
+  </div>
+  <!-- Scoreboard - Mental Model (matches TV scoreboards) -->
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:20px;">
+      <div class="team-logo" style="width:56px;height:56px;font-size:20px;background:linear-gradient(135deg,#C41E3A,#FF4500)">RCB</div>
+      <div><div style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.7);">Royal Challengers Bengaluru</div><div style="font-size:36px;font-weight:900;">204/6 <span style="font-size:16px;color:rgba(255,255,255,0.5);">(20 ov)</span></div></div>
+    </div>
+    <div style="font-size:18px;font-weight:800;color:var(--accent);background:rgba(0,200,83,0.1);padding:8px 20px;border-radius:100px;">VS</div>
+    <div style="display:flex;align-items:center;gap:20px;">
+      <div class="team-logo" style="width:56px;height:56px;font-size:20px;background:linear-gradient(135deg,#1C3879,#607EAA)">GT</div>
+      <div><div style="font-size:14px;font-weight:600;color:rgba(255,255,255,0.7);">Gujarat Titans</div><div style="font-size:36px;font-weight:900;">186/4 <span style="font-size:16px;color:rgba(255,255,255,0.5);">(16.2 ov)</span></div></div>
+    </div>
+  </div>
+  <div style="margin-top:16px;padding:10px 16px;background:rgba(0,200,83,0.1);border-radius:var(--radius-sm);font-size:14px;font-weight:600;color:var(--accent);">GT need 19 runs from 22 balls • CRR: 11.38 • RRR: 5.18</div>
+  <!-- Progress Bar - Closure (Gestalt), Shneiderman R4 -->
+  <div style="margin-top:12px;">
+    <div style="display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:4px;"><span>Innings Progress</span><span>16.2/20 overs</span></div>
+    <div style="background:rgba(255,255,255,0.1);border-radius:100px;height:6px;overflow:hidden;"><div style="width:81.5%;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-dark));border-radius:100px;transition:width 0.5s;"></div></div>
+    <span class="hci-tag" style="margin-top:6px;">Closure (Gestalt)</span><span class="hci-tag">Shneiderman R4</span>
+  </div>
+</div>
+</section>
+
+<!-- Tabs - Hick's Law -->
+<div class="container" style="margin-top:20px;">
+<div class="tabs" id="match-tabs">
+  <div class="tab active" onclick="switchTab(this,'commentary')">Commentary</div>
+  <div class="tab" onclick="switchTab(this,'scorecard')">Scorecard</div>
+  <div class="tab" onclick="switchTab(this,'stats')">Key Stats</div>
+  <div class="tab" onclick="switchTab(this,'info')">Match Info</div>
+</div>
+<span class="hci-tag" style="margin-top:8px;display:inline-block;">Hick's Law: Reduce choices via tabs</span>
+
+<!-- Commentary Tab - Feedback, Real-time -->
+<div id="tab-commentary" class="tab-content" style="padding:20px 0;">
+  <h3 style="font-size:16px;font-weight:700;margin-bottom:16px;">Ball-by-Ball <span class="hci-tag">Feedback</span><span class="hci-tag">Affordance</span></h3>
+  <div style="display:flex;flex-direction:column;gap:10px;">
+    <div class="card" style="display:flex;gap:14px;padding:14px 18px;align-items:flex-start;border-left:3px solid var(--accent);">
+      <div style="min-width:50px;text-align:center;"><div style="font-size:12px;font-weight:700;color:var(--accent);">16.2</div><div style="font-size:20px;font-weight:900;color:var(--accent);">6</div></div>
+      <div><div style="font-size:13px;font-weight:600;">Shami to Gill</div><div style="font-size:13px;color:var(--text-muted);">SIX! Gill smashes it over long-on! The crowd erupts!</div></div>
+    </div>
+    <div class="card" style="display:flex;gap:14px;padding:14px 18px;align-items:flex-start;">
+      <div style="min-width:50px;text-align:center;"><div style="font-size:12px;font-weight:700;">16.1</div><div style="font-size:20px;font-weight:900;">1</div></div>
+      <div><div style="font-size:13px;font-weight:600;">Shami to Gill</div><div style="font-size:13px;color:var(--text-muted);">Single to deep mid-wicket. Gill retains strike.</div></div>
+    </div>
+    <div class="card" style="display:flex;gap:14px;padding:14px 18px;align-items:flex-start;border-left:3px solid var(--danger);">
+      <div style="min-width:50px;text-align:center;"><div style="font-size:12px;font-weight:700;color:var(--danger);">15.6</div><div style="font-size:20px;font-weight:900;color:var(--danger);">W</div></div>
+      <div><div style="font-size:13px;font-weight:600;">Siraj to Miller</div><div style="font-size:13px;color:var(--text-muted);">OUT! Caught at deep square leg! Miller departs for 34(18).</div></div>
+    </div>
+    <div class="card" style="display:flex;gap:14px;padding:14px 18px;align-items:flex-start;border-left:3px solid var(--gold);">
+      <div style="min-width:50px;text-align:center;"><div style="font-size:12px;font-weight:700;color:var(--gold);">15.5</div><div style="font-size:20px;font-weight:900;color:var(--gold);">4</div></div>
+      <div><div style="font-size:13px;font-weight:600;">Siraj to Miller</div><div style="font-size:13px;color:var(--text-muted);">FOUR! Driven through covers. Beautiful shot!</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Scorecard Tab -->
+<div id="tab-scorecard" class="tab-content" style="padding:20px 0;display:none;">
+  <h3 style="font-size:16px;font-weight:700;margin-bottom:16px;">GT Innings <span class="hci-tag">Visual Balance</span></h3>
+  <div class="card" style="overflow-x:auto;">
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <thead><tr style="background:var(--bg);"><th style="padding:10px 14px;text-align:left;font-weight:700;">Batter</th><th style="padding:10px;text-align:center;">R</th><th style="padding:10px;text-align:center;">B</th><th style="padding:10px;text-align:center;">4s</th><th style="padding:10px;text-align:center;">6s</th><th style="padding:10px;text-align:center;">SR</th></tr></thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:10px 14px;font-weight:600;">Shubman Gill (c) *</td><td style="text-align:center;font-weight:700;color:var(--accent);">78</td><td style="text-align:center;">46</td><td style="text-align:center;">6</td><td style="text-align:center;">4</td><td style="text-align:center;">169.56</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:10px 14px;font-weight:600;">Sai Sudharsan</td><td style="text-align:center;font-weight:700;">42</td><td style="text-align:center;">31</td><td style="text-align:center;">4</td><td style="text-align:center;">1</td><td style="text-align:center;">135.48</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:10px 14px;font-weight:600;color:var(--danger);">David Miller</td><td style="text-align:center;">34</td><td style="text-align:center;">18</td><td style="text-align:center;">3</td><td style="text-align:center;">2</td><td style="text-align:center;">188.88</td></tr>
+        <tr><td style="padding:10px 14px;font-weight:600;">Rahul Tewatia *</td><td style="text-align:center;">18</td><td style="text-align:center;">10</td><td style="text-align:center;">1</td><td style="text-align:center;">1</td><td style="text-align:center;">180.00</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Stats Tab -->
+<div id="tab-stats" class="tab-content" style="padding:20px 0;display:none;">
+  <h3 style="font-size:16px;font-weight:700;margin-bottom:16px;">Key Stats <span class="hci-tag">Visual Dominance</span></h3>
+  <div class="grid-2">
+    <div class="card card-body" style="text-align:center;"><div style="font-size:32px;font-weight:900;color:var(--accent);">78*</div><div style="font-size:12px;color:var(--text-muted);">Gill's Score (46 balls)</div></div>
+    <div class="card card-body" style="text-align:center;"><div style="font-size:32px;font-weight:900;color:var(--highlight);">11.38</div><div style="font-size:12px;color:var(--text-muted);">Current Run Rate</div></div>
+    <div class="card card-body" style="text-align:center;"><div style="font-size:32px;font-weight:900;color:var(--danger);">4</div><div style="font-size:12px;color:var(--text-muted);">Wickets Fallen</div></div>
+    <div class="card card-body" style="text-align:center;"><div style="font-size:32px;font-weight:900;color:var(--info);">22</div><div style="font-size:12px;color:var(--text-muted);">Balls Remaining</div></div>
+  </div>
+</div>
+
+<!-- Info Tab -->
+<div id="tab-info" class="tab-content" style="padding:20px 0;display:none;">
+  <h3 style="font-size:16px;font-weight:700;margin-bottom:16px;">Match Info</h3>
+  <div class="card card-body">
+    <div style="display:grid;grid-template-columns:120px 1fr;gap:10px;font-size:13px;">
+      <span style="font-weight:700;color:var(--text-muted);">Match</span><span>42nd Match, IPL 2026</span>
+      <span style="font-weight:700;color:var(--text-muted);">Venue</span><span>Narendra Modi Stadium, Ahmedabad</span>
+      <span style="font-weight:700;color:var(--text-muted);">Date</span><span>April 30, 2026</span>
+      <span style="font-weight:700;color:var(--text-muted);">Toss</span><span>RCB won toss, chose to bat</span>
+      <span style="font-weight:700;color:var(--text-muted);">Umpires</span><span>Nitin Menon, Chris Gaffaney</span>
+    </div>
+  </div>
+</div>
+</div>
+</main>
+
+<footer><div class="container"><div class="footer-bottom"><span>© 2026 CricPulse</span><div class="social-icons"><div class="social-icon"><i class="fab fa-twitter"></i></div><div class="social-icon"><i class="fab fa-youtube"></i></div></div></div></div></footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite"><i class="fas fa-check-circle" style="color:var(--accent)"></i><span class="toast-msg"></span><button class="undo-btn" style="display:none">Undo</button></div>
+
+<script src="js/app.js"></script>
+<script>
+function switchTab(el, tabId) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+  el.classList.add('active');
+  document.getElementById('tab-' + tabId).style.display = 'block';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notifications - CricPulse</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+.notif-card { display:flex;gap:14px;padding:16px 20px;border-bottom:1px solid var(--border);transition:all 0.2s;cursor:pointer;position:relative; }
+.notif-card:hover { background:var(--bg); }
+.notif-card.unread { background:rgba(0,200,83,0.04); }
+.notif-card.unread::before { content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent); }
+.notif-icon { width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;flex-shrink:0; }
+.notif-time { font-size:11px;color:var(--text-muted);margin-top:4px; }
+.notif-dismiss { position:absolute;right:16px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;color:var(--text-muted);font-size:12px;opacity:0;transition:opacity 0.2s; }
+.notif-card:hover .notif-dismiss { opacity:1; }
+.notif-dismiss:hover { background:var(--danger);color:#fff; }
+.notif-tab { display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:100px;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;border:1.5px solid var(--border);background:var(--card); }
+.notif-tab:hover,.notif-tab.active { background:var(--accent);color:#fff;border-color:var(--accent); }
+.notif-count { background:var(--danger);color:#fff;font-size:10px;font-weight:700;padding:1px 6px;border-radius:100px; }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="navbar"><div class="nav-top"><a href="index.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-cricket-bat-ball"></i></div>Cric<span>Pulse</span></a><div class="nav-search"><i class="fas fa-search search-icon"></i><input type="search" placeholder="Search..." aria-label="Search"><div id="search-suggestions" style="display:none;position:absolute;top:100%;left:0;right:0;background:var(--card);border-radius:0 0 12px 12px;box-shadow:var(--shadow-hover);z-index:100;"></div></div><div class="nav-actions"><button class="nav-action" onclick="toggleTheme()"><i class="fas fa-moon"></i><span>Theme</span></button><a href="help.html" class="nav-action"><i class="fas fa-question-circle"></i><span>Help</span></a></div></div>
+<div class="nav-menu"><a href="index.html" class="nav-link live-link">🏏 Live</a><a href="schedule.html" class="nav-link">Schedule</a><a href="news.html" class="nav-link">News</a><a href="standings.html" class="nav-link">Standings</a><a href="videos.html" class="nav-link">Videos</a><a href="fantasy.html" class="nav-link">Fantasy</a></div></nav>
+
+<main id="main">
+<div class="container" style="padding-top:20px;max-width:720px;">
+<div class="breadcrumbs"><a href="index.html">Home</a><span class="sep">›</span><span>Notifications</span></div>
+
+<div style="display:flex;align-items:center;justify-content:space-between;margin:8px 0 20px;">
+  <div>
+    <h1 style="font-size:24px;font-weight:900;">🔔 Notifications</h1>
+    <p style="font-size:13px;color:var(--text-muted);">Stay updated with live action <span class="hci-tag">Shneiderman R3: Feedback</span><span class="hci-tag">Recency Effect</span></p>
+  </div>
+  <button class="btn btn-outline" style="font-size:12px;" onclick="markAllRead()"><i class="fas fa-check-double"></i> Mark all read</button>
+</div>
+
+<!-- Filter Tabs -->
+<div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;">
+  <span class="notif-tab active" onclick="filterNotifs(this,'all')">All <span class="notif-count">7</span></span>
+  <span class="notif-tab" onclick="filterNotifs(this,'match')">Matches <span class="notif-count">3</span></span>
+  <span class="notif-tab" onclick="filterNotifs(this,'wicket')">Wickets <span class="notif-count">2</span></span>
+  <span class="notif-tab" onclick="filterNotifs(this,'news')">News <span class="notif-count">1</span></span>
+  <span class="notif-tab" onclick="filterNotifs(this,'fantasy')">Fantasy <span class="notif-count">1</span></span>
+</div>
+<span class="hci-tag">Hick's Law: Filter by category</span>
+
+<!-- Notifications List -->
+<div class="card" style="overflow:hidden;" id="notif-list">
+  <!-- Unread notifications -->
+  <div class="notif-card unread" data-cat="match" onclick="location='match-detail.html'">
+    <div class="notif-icon" style="background:linear-gradient(135deg,#00C853,#00963F);"><i class="fas fa-cricket-bat-ball"></i></div>
+    <div style="flex:1;">
+      <div style="font-size:14px;font-weight:700;">GT vs RCB is LIVE! 🔴</div>
+      <div style="font-size:13px;color:var(--text-muted);">42nd Match • IPL 2026 • GT 186/4 (16.2)</div>
+      <div class="notif-time">2 min ago</div>
+    </div>
+    <button class="notif-dismiss" onclick="event.stopPropagation();dismissNotif(this)" aria-label="Dismiss notification"><i class="fas fa-times"></i></button>
+  </div>
+
+  <div class="notif-card unread" data-cat="wicket" onclick="location='match-detail.html'">
+    <div class="notif-icon" style="background:linear-gradient(135deg,#E74C3C,#C0392B);"><i class="fas fa-bolt"></i></div>
+    <div style="flex:1;">
+      <div style="font-size:14px;font-weight:700;">WICKET! Miller c Siraj b Shami 34(18)</div>
+      <div style="font-size:13px;color:var(--text-muted);">GT 168/4 (15.6) — GT need 37 from 25</div>
+      <div class="notif-time">8 min ago</div>
+    </div>
+    <button class="notif-dismiss" onclick="event.stopPropagation();dismissNotif(this)" aria-label="Dismiss"><i class="fas fa-times"></i></button>
+  </div>
+
+  <div class="notif-card unread" data-cat="match" onclick="location='match-detail.html'">
+    <div class="notif-icon" style="background:linear-gradient(135deg,#FF6B00,#FF9933);"><i class="fas fa-flag-checkered"></i></div>
+    <div style="flex:1;">
+      <div style="font-size:14px;font-weight:700;">SRH won by 6 wickets! 🎉</div>
+      <div style="font-size:13px;color:var(--text-muted);">MI 243/5 → SRH 249/4 (18.4) • Head 109*(39)</div>
+      <div class="notif-time">1h ago</div>
+    </div>
+    <button class="notif-dismiss" onclick="event.stopPropagation();dismissNotif(this)" aria-label="Dismiss"><i class="fas fa-times"></i></button>
+  </div>
+
+  <!-- Read notifications -->
+  <div class="notif-card" data-cat="wicket" onclick="location='match-detail.html'">
+    <div class="notif-icon" style="background:linear-gradient(135deg,#E74C3C,#C0392B);"><i class="fas fa-bolt"></i></div>
+    <div style="flex:1;">
+      <div style="font-size:14px;font-weight:600;">WICKET! Rohit Sharma b Cummins 12(8)</div>
+      <div style="font-size:13px;color:var(--text-muted);">MI 34/2 (3.4) — SRH vs MI</div>
+      <div class="notif-time">3h ago</div>
+    </div>
+    <button class="notif-dismiss" onclick="event.stopPropagation();dismissNotif(this)" aria-label="Dismiss"><i class="fas fa-times"></i></button>
+  </div>
+
+  <div class="notif-card" data-cat="news" onclick="location='news.html'">
+    <div class="notif-icon" style="background:linear-gradient(135deg,#3498DB,#2980B9);"><i class="fas fa-newspaper"></i></div>
+    <div style="flex:1;">
+      <div style="font-size:14px;font-weight:600;">Breaking: Parag fined for dressing room incident</div>
+      <div style="font-size:13px;color:var(--text-muted);">BCCI takes strict action • Read more</div>
+      <div class="notif-time">42 min ago</div>
+    </div>
+    <button class="notif-dismiss" onclick="event.stopPropagation();dismissNotif(this)" aria-label="Dismiss"><i class="fas fa-times"></i></button>
+  </div>
+
+  <div class="notif-card" data-cat="fantasy" onclick="location='fantasy.html'">
+    <div class="notif-icon" style="background:linear-gradient(135deg,#F4A261,#E76F51);"><i class="fas fa-star"></i></div>
+    <div style="flex:1;">
+      <div style="font-size:14px;font-weight:600;">Your prediction was correct! +280 pts 🎯</div>
+      <div style="font-size:13px;color:var(--text-muted);">SRH win • You predicted SRH • Leaderboard rank: #5</div>
+      <div class="notif-time">1h ago</div>
+    </div>
+    <button class="notif-dismiss" onclick="event.stopPropagation();dismissNotif(this)" aria-label="Dismiss"><i class="fas fa-times"></i></button>
+  </div>
+
+  <div class="notif-card" data-cat="match" onclick="location='schedule.html'">
+    <div class="notif-icon" style="background:linear-gradient(135deg,#9B59B6,#8E44AD);"><i class="fas fa-clock"></i></div>
+    <div style="flex:1;">
+      <div style="font-size:14px;font-weight:600;">CSK vs DC starts in 3 hours ⏰</div>
+      <div style="font-size:13px;color:var(--text-muted);">43rd Match • IPL 2026 • 7:30 PM</div>
+      <div class="notif-time">2h ago</div>
+    </div>
+    <button class="notif-dismiss" onclick="event.stopPropagation();dismissNotif(this)" aria-label="Dismiss"><i class="fas fa-times"></i></button>
+  </div>
+</div>
+
+<!-- Notification Settings Link -->
+<div style="text-align:center;padding:20px;font-size:13px;color:var(--text-muted);">
+  <a href="settings.html" style="color:var(--accent);font-weight:600;"><i class="fas fa-cog"></i> Manage notification preferences</a>
+  <span class="hci-tag" style="margin-left:8px;">Shneiderman R7: Internal Locus of Control</span>
+</div>
+
+</div>
+</main>
+
+<footer style="margin-top:40px;"><div class="container"><div class="footer-bottom"><span>© 2026 CricPulse</span><div class="social-icons"><div class="social-icon"><i class="fab fa-twitter"></i></div><div class="social-icon"><i class="fab fa-youtube"></i></div></div></div></div></footer>
+<div id="toast" class="toast" role="status" aria-live="polite"><i class="fas fa-check-circle" style="color:var(--accent)"></i><span class="toast-msg"></span><button class="undo-btn" style="display:none">Undo</button></div>
+<script src="js/app.js"></script>
+<script>
+function dismissNotif(btn) {
+  const card = btn.closest('.notif-card');
+  card.style.opacity = '0'; card.style.height = card.offsetHeight + 'px';
+  setTimeout(() => { card.style.height = '0'; card.style.padding = '0'; card.style.margin = '0'; card.style.overflow = 'hidden'; }, 50);
+  // Shneiderman R6: Undo
+  showToast('Notification dismissed', () => { card.style = ''; });
+}
+function markAllRead() {
+  document.querySelectorAll('.notif-card.unread').forEach(c => c.classList.remove('unread'));
+  showToast('✅ All notifications marked as read');
+}
+function filterNotifs(el, cat) {
+  document.querySelectorAll('.notif-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.notif-card').forEach(c => {
+    c.style.display = (cat === 'all' || c.dataset.cat === cat) ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>

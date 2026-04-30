@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CricPulse - Live Cricket Scores, News, Stats & Schedule">
+<title>CricPulse - Live Cricket Scores</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- Top Bar - Reciprocity -->
+<div class="top-bar">🏏 Welcome to CricPulse! Your #1 Cricket Destination — <strong>2.4M+ fans</strong> trust us</div>
+
+<!-- Navbar -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+<div class="nav-top">
+  <a href="index.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-cricket-bat-ball"></i></div>Cric<span>Pulse</span></a>
+  <div class="nav-search"><i class="fas fa-search search-icon"></i><input type="search" id="main-search" placeholder="Search players, teams, matches..." aria-label="Search"><div id="search-suggestions" style="display:none;position:absolute;top:100%;left:0;right:0;background:var(--card);border-radius:0 0 12px 12px;box-shadow:var(--shadow-hover);z-index:100;"></div></div>
+  <div class="nav-actions">
+    <button class="nav-action" aria-label="Dark Mode" onclick="toggleTheme()" data-tooltip="Toggle Dark Mode (D)"><i class="fas fa-moon"></i><span>Theme</span></button>
+    <a href="notifications.html" class="nav-action" aria-label="Notifications"><i class="fas fa-bell"></i><span>Alerts</span><span class="nav-badge notif-badge">3</span></a>
+    <a href="settings.html" class="nav-action" aria-label="Settings"><i class="fas fa-cog"></i><span>Settings</span></a>
+    <a href="help.html" class="nav-action" aria-label="Help"><i class="fas fa-question-circle"></i><span>Help</span></a>
+  </div>
+</div>
+<div class="nav-menu" role="menubar">
+  <a href="index.html" class="nav-link active live-link" role="menuitem">🏏 Live</a>
+  <a href="schedule.html" class="nav-link" role="menuitem">Schedule</a>
+  <a href="news.html" class="nav-link" role="menuitem">News</a>
+  <a href="standings.html" class="nav-link" role="menuitem">Standings</a>
+  <a href="videos.html" class="nav-link" role="menuitem">Videos</a>
+  <a href="fantasy.html" class="nav-link" role="menuitem">Fantasy</a>
+</div>
+</nav>
+
+<main id="main">
+<!-- Hero Section - Inverted Pyramid -->
+<section style="background:linear-gradient(135deg,#0A1628 0%,#1C3454 60%,#0A1628 100%);padding:48px 0;position:relative;overflow:hidden;">
+<div style="position:absolute;top:-40%;right:-5%;width:500px;height:700px;background:radial-gradient(ellipse,rgba(0,200,83,0.12),transparent 70%);"></div>
+<div class="container" style="position:relative;z-index:1;">
+  <div style="max-width:560px;">
+    <div style="display:inline-block;background:rgba(0,200,83,0.15);color:var(--accent);border:1px solid rgba(0,200,83,0.3);padding:5px 14px;border-radius:100px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;">🏆 IPL 2026 LIVE</div>
+    <h1 style="font-size:44px;font-weight:900;color:#fff;line-height:1.12;margin-bottom:14px;letter-spacing:-1px;">Every Ball.<br><span style="color:var(--accent);">Every Moment.</span></h1>
+    <p style="font-size:15px;color:rgba(255,255,255,0.6);margin-bottom:28px;line-height:1.7;">Live scores, ball-by-ball commentary, expert analysis. India's most trusted cricket platform.</p>
+    <div style="display:flex;gap:12px;">
+      <a href="#live-matches" class="btn btn-primary btn-lg"><i class="fas fa-play"></i> Watch Live</a>
+      <a href="schedule.html" class="btn btn-ghost btn-lg">View Schedule</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Match Ticker - Serial Position (Primacy) -->
+<section style="background:var(--primary);padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.08);overflow-x:auto;">
+<div class="container" style="display:flex;gap:16px;overflow-x:auto;padding-bottom:4px;">
+  <div style="display:flex;align-items:center;gap:8px;background:rgba(0,200,83,0.1);border:1px solid rgba(0,200,83,0.2);padding:8px 16px;border-radius:100px;flex-shrink:0;cursor:pointer;" onclick="location='match-detail.html'">
+    <span class="match-status status-live">LIVE</span>
+    <span style="color:#fff;font-size:12px;font-weight:600;">GT vs RCB</span>
+    <span style="color:rgba(255,255,255,0.5);font-size:11px;">• IPL</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.05);padding:8px 16px;border-radius:100px;flex-shrink:0;cursor:pointer;" onclick="location='match-detail.html'">
+    <span class="match-status status-completed">DONE</span>
+    <span style="color:#fff;font-size:12px;font-weight:600;">MI vs SRH</span>
+    <span style="color:rgba(255,255,255,0.5);font-size:11px;">SRH won</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.05);padding:8px 16px;border-radius:100px;flex-shrink:0;cursor:pointer;" onclick="location='match-detail.html'">
+    <span class="match-status status-completed">DONE</span>
+    <span style="color:#fff;font-size:12px;font-weight:600;">PBKS vs RR</span>
+    <span style="color:rgba(255,255,255,0.5);font-size:11px;">RR won</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px;background:rgba(255,107,53,0.1);border:1px solid rgba(255,107,53,0.2);padding:8px 16px;border-radius:100px;flex-shrink:0;cursor:pointer;" onclick="location='schedule.html'">
+    <span class="match-status status-upcoming">7:30 PM</span>
+    <span style="color:#fff;font-size:12px;font-weight:600;">CSK vs DC</span>
+    <span style="color:rgba(255,255,255,0.5);font-size:11px;">Today</span>
+  </div>
+</div>
+</section>
+
+<!-- Live Matches Section - Gestalt Proximity & Similarity -->
+<section class="section" id="live-matches">
+<div class="container">
+  <div class="section-header">
+    <div><h2 class="section-title">🔴 Live Matches <span class="hci-tag">Gestalt Proximity</span><span class="hci-tag">Mental Model</span></h2><p class="section-sub">Ball-by-ball updates • Auto-refreshing</p></div>
+    <a href="schedule.html" class="view-all-btn">All Matches</a>
+  </div>
+  <div class="grid-3">
+    <!-- Match 1: LIVE -->
+    <div class="match-card live animate-on-scroll" onclick="location='match-detail.html'">
+      <div class="match-header"><span>42nd Match • IPL 2026</span><span class="match-status status-live">● LIVE</span></div>
+      <div class="match-body">
+        <div class="team-row"><div class="team-info"><div class="team-logo" style="background:linear-gradient(135deg,#1C3879,#607EAA)">GT</div><span class="team-name">Gujarat Titans</span></div><div><span class="team-score">186/4</span><span class="team-overs">(16.2)</span></div></div>
+        <div class="team-row"><div class="team-info"><div class="team-logo" style="background:linear-gradient(135deg,#C41E3A,#FF4500)">RCB</div><span class="team-name">Royal Challengers</span></div><div><span class="team-score">204/6</span><span class="team-overs">(20)</span></div></div>
+      </div>
+      <div class="match-result">GT need 19 runs from 22 balls</div>
+    </div>
+    <!-- Match 2: Completed -->
+    <div class="match-card animate-on-scroll" onclick="location='match-detail.html'">
+      <div class="match-header"><span>41st Match • IPL 2026</span><span class="match-status status-completed">COMPLETED</span></div>
+      <div class="match-body">
+        <div class="team-row"><div class="team-info"><div class="team-logo" style="background:linear-gradient(135deg,#004BA0,#1A73E8)">MI</div><span class="team-name">Mumbai Indians</span></div><div><span class="team-score">243/5</span><span class="team-overs">(20)</span></div></div>
+        <div class="team-row"><div class="team-info"><div class="team-logo" style="background:linear-gradient(135deg,#FF6B00,#FF9933)">SRH</div><span class="team-name">Sunrisers Hyderabad</span></div><div><span class="team-score" style="color:var(--accent)">249/4</span><span class="team-overs">(18.4)</span></div></div>
+      </div>
+      <div class="match-result">SRH won by 6 wickets</div>
+    </div>
+    <!-- Match 3: Upcoming -->
+    <div class="match-card animate-on-scroll" onclick="location='schedule.html'">
+      <div class="match-header"><span>43rd Match • IPL 2026</span><span class="match-status status-upcoming">TODAY 7:30 PM</span></div>
+      <div class="match-body">
+        <div class="team-row"><div class="team-info"><div class="team-logo" style="background:linear-gradient(135deg,#FCCA00,#F37021)">CSK</div><span class="team-name">Chennai Super Kings</span></div><div><span class="team-score" style="color:var(--text-muted)">-</span></div></div>
+        <div class="team-row"><div class="team-info"><div class="team-logo" style="background:linear-gradient(135deg,#004C93,#17479E)">DC</div><span class="team-name">Delhi Capitals</span></div><div><span class="team-score" style="color:var(--text-muted)">-</span></div></div>
+      </div>
+      <div class="match-result" style="color:var(--highlight)"><i class="fas fa-clock"></i> Match starts in 3h 15m</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Quick Links - Fitts' Law (large targets) -->
+<section style="background:var(--card);padding:28px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+<div class="container">
+  <div class="grid-4" style="text-align:center;">
+    <a href="standings.html" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px;border-radius:var(--radius);transition:all 0.2s;cursor:pointer;" onmouseover="this.style.background='var(--bg)'" onmouseout="this.style.background=''">
+      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#00C853,#00963F);display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;"><i class="fas fa-trophy"></i></div>
+      <span style="font-size:13px;font-weight:600;">Points Table</span>
+    </a>
+    <a href="player.html" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px;border-radius:var(--radius);transition:all 0.2s;cursor:pointer;" onmouseover="this.style.background='var(--bg)'" onmouseout="this.style.background=''">
+      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#3498DB,#2980B9);display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;"><i class="fas fa-user"></i></div>
+      <span style="font-size:13px;font-weight:600;">Player Stats</span>
+    </a>
+    <a href="fantasy.html" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px;border-radius:var(--radius);transition:all 0.2s;cursor:pointer;" onmouseover="this.style.background='var(--bg)'" onmouseout="this.style.background=''">
+      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#F4A261,#E76F51);display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;"><i class="fas fa-hat-wizard"></i></div>
+      <span style="font-size:13px;font-weight:600;">Fantasy</span>
+    </a>
+    <a href="videos.html" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px;border-radius:var(--radius);transition:all 0.2s;cursor:pointer;" onmouseover="this.style.background='var(--bg)'" onmouseout="this.style.background=''">
+      <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#E74C3C,#C0392B);display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;"><i class="fas fa-play-circle"></i></div>
+      <span style="font-size:13px;font-weight:600;">Highlights</span>
+    </a>
+  </div>
+</div>
+</section>
+
+<!-- Latest News - F-Pattern, Inverted Pyramid -->
+<section class="section">
+<div class="container">
+  <div class="section-header">
+    <div><h2 class="section-title">📰 Latest News <span class="hci-tag">F-Pattern</span><span class="hci-tag">Inverted Pyramid</span></h2><p class="section-sub">Breaking stories and expert analysis</p></div>
+    <a href="news.html" class="view-all-btn">All News</a>
+  </div>
+  <div class="grid-3">
+    <a href="news.html" class="card animate-on-scroll">
+      <div style="height:160px;background:linear-gradient(135deg,#1C3454,#0A1628);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.3);font-size:40px;"><i class="fas fa-newspaper"></i></div>
+      <div class="card-body">
+        <div style="display:flex;gap:8px;margin-bottom:8px;"><span style="background:var(--danger);color:#fff;padding:2px 8px;border-radius:100px;font-size:10px;font-weight:700;">BREAKING</span><span style="font-size:11px;color:var(--text-muted);">42m ago</span></div>
+        <h3 style="font-size:15px;font-weight:700;margin-bottom:6px;line-height:1.35;">Riyan Parag cops hefty fine for dressing room incident</h3>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.5;">BCCI takes strict action after viral footage surfaces during IPL match...</p>
+      </div>
+    </a>
+    <a href="news.html" class="card animate-on-scroll">
+      <div style="height:160px;background:linear-gradient(135deg,#FF6B00,#FF9933);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.3);font-size:40px;"><i class="fas fa-chart-line"></i></div>
+      <div class="card-body">
+        <div style="display:flex;gap:8px;margin-bottom:8px;"><span style="background:var(--highlight);color:#fff;padding:2px 8px;border-radius:100px;font-size:10px;font-weight:700;">ANALYSIS</span><span style="font-size:11px;color:var(--text-muted);">4h ago</span></div>
+        <h3 style="font-size:15px;font-weight:700;margin-bottom:6px;line-height:1.35;">SRH's fifth straight win — the unstoppable orange army</h3>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.5;">Head and Klaasen's partnership dismantles MI's 243-run target with ease...</p>
+      </div>
+    </a>
+    <a href="news.html" class="card animate-on-scroll">
+      <div style="height:160px;background:linear-gradient(135deg,#00C853,#00963F);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.3);font-size:40px;"><i class="fas fa-trophy"></i></div>
+      <div class="card-body">
+        <div style="display:flex;gap:8px;margin-bottom:8px;"><span style="background:var(--accent);color:#fff;padding:2px 8px;border-radius:100px;font-size:10px;font-weight:700;">IPL</span><span style="font-size:11px;color:var(--text-muted);">7h ago</span></div>
+        <h3 style="font-size:15px;font-weight:700;margin-bottom:6px;line-height:1.35;">RCB return to title turf as GT face batting depth test</h3>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.5;">Can Gujarat overcome their middle-order woes against an in-form RCB?</p>
+      </div>
+    </a>
+  </div>
+</div>
+</section>
+
+<!-- Social Proof - Cialdini -->
+<section style="background:var(--card);padding:32px 0;border-top:1px solid var(--border);">
+<div class="container">
+  <div class="grid-4" style="text-align:center;">
+    <div class="animate-on-scroll"><div style="font-size:36px;font-weight:900;color:var(--primary);">2.4M+</div><div style="font-size:12px;color:var(--text-muted);">Active Users <span class="hci-tag">Social Proof</span></div></div>
+    <div class="animate-on-scroll"><div style="font-size:36px;font-weight:900;color:var(--primary);">50K+</div><div style="font-size:12px;color:var(--text-muted);">Matches Covered</div></div>
+    <div class="animate-on-scroll"><div style="font-size:36px;font-weight:900;color:var(--primary);">4.9★</div><div style="font-size:12px;color:var(--text-muted);">App Rating <span class="hci-tag">Authority</span></div></div>
+    <div class="animate-on-scroll"><div style="font-size:36px;font-weight:900;color:var(--primary);">24/7</div><div style="font-size:12px;color:var(--text-muted);">Live Coverage</div></div>
+  </div>
+</div>
+</section>
+
+<!-- Trending - Recency Effect -->
+<section class="section" style="background:var(--bg);">
+<div class="container">
+  <div class="section-header">
+    <div><h2 class="section-title">🔥 Trending Now <span class="hci-tag">Recency Effect</span></h2><p class="section-sub">Most viewed by fans right now</p></div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <a href="player.html" class="card" style="display:flex;align-items:center;padding:14px 20px;gap:16px;"><div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#FF6B00,#FF9933);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px;flex-shrink:0;">1</div><div style="flex:1;"><div style="font-size:14px;font-weight:700;">Travis Head smashes fastest IPL century</div><div style="font-size:12px;color:var(--text-muted);">SRH vs MI • 2.1M views</div></div><i class="fas fa-chevron-right" style="color:var(--text-light);"></i></a>
+    <a href="news.html" class="card" style="display:flex;align-items:center;padding:14px 20px;gap:16px;"><div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#3498DB,#2980B9);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px;flex-shrink:0;">2</div><div style="flex:1;"><div style="font-size:14px;font-weight:700;">IPL 2026 Points Table — Race for playoffs heats up</div><div style="font-size:12px;color:var(--text-muted);">Standings • 1.8M views</div></div><i class="fas fa-chevron-right" style="color:var(--text-light);"></i></a>
+    <a href="news.html" class="card" style="display:flex;align-items:center;padding:14px 20px;gap:16px;"><div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#E74C3C,#C0392B);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px;flex-shrink:0;">3</div><div style="flex:1;"><div style="font-size:14px;font-weight:700;">Virat Kohli's return form — stats breakdown</div><div style="font-size:12px;color:var(--text-muted);">Analysis • 1.5M views</div></div><i class="fas fa-chevron-right" style="color:var(--text-light);"></i></a>
+  </div>
+</div>
+</section>
+</main>
+
+<!-- Footer -->
+<footer>
+<div class="container">
+<div class="footer-grid">
+  <div class="footer-brand"><div class="nav-logo" style="margin-bottom:8px;"><div class="logo-icon"><i class="fas fa-cricket-bat-ball"></i></div>Cric<span>Pulse</span></div><p>India's most trusted cricket platform. Live scores, analysis, and everything cricket.</p></div>
+  <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Live Scores</a></li><li><a href="schedule.html">Schedule</a></li><li><a href="news.html">News</a></li><li><a href="standings.html">Standings</a></li><li><a href="videos.html">Videos</a></li></ul></div>
+  <div class="footer-col"><h4>More</h4><ul><li><a href="player.html">Players</a></li><li><a href="fantasy.html">Fantasy</a></li><li><a href="search.html">Search</a></li><li><a href="settings.html">Settings</a></li></ul></div>
+  <div class="footer-col"><h4>Support</h4><ul><li><a href="help.html">Help Center</a></li><li><a href="help.html">FAQ</a></li><li><a href="help.html">Contact</a></li><li><a href="settings.html">Accessibility</a></li></ul></div>
+</div>
+<div class="footer-bottom"><span>© 2026 CricPulse. Designed with HCI Best Practices.</span><div class="social-icons"><div class="social-icon"><i class="fab fa-twitter"></i></div><div class="social-icon"><i class="fab fa-instagram"></i></div><div class="social-icon"><i class="fab fa-youtube"></i></div></div></div>
+</div>
+</footer>
+
+<!-- Toast -->
+<div id="toast" class="toast" role="status" aria-live="polite"><i class="fas fa-check-circle" style="color:var(--accent)"></i><span class="toast-msg">Done!</span><button class="undo-btn" style="display:none">Undo</button></div>
+
+<!-- Onboarding -->
+<div id="onboarding" class="onboarding-overlay">
+<div class="onboarding-card">
+  <div style="font-size:48px;margin-bottom:16px;">🏏</div>
+  <h2>Welcome to CricPulse!</h2>
+  <p>Your ultimate cricket companion. Get live scores, news, stats and more. Press <kbd style="background:var(--bg);padding:2px 8px;border-radius:4px;font-size:12px;border:1px solid var(--border);">?</kbd> anytime for keyboard shortcuts.</p>
+  <button class="btn btn-primary btn-lg" onclick="dismissOnboarding()" style="width:100%;justify-content:center;">Let's Go! 🎉</button>
+</div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

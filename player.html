@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virat Kohli - Player Profile - CricPulse</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="navbar"><div class="nav-top"><a href="index.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-cricket-bat-ball"></i></div>Cric<span>Pulse</span></a><div class="nav-search"><i class="fas fa-search search-icon"></i><input type="search" placeholder="Search..." aria-label="Search"><div id="search-suggestions" style="display:none;position:absolute;top:100%;left:0;right:0;background:var(--card);border-radius:0 0 12px 12px;box-shadow:var(--shadow-hover);z-index:100;"></div></div><div class="nav-actions"><button class="nav-action" onclick="toggleTheme()"><i class="fas fa-moon"></i><span>Theme</span></button><a href="help.html" class="nav-action"><i class="fas fa-question-circle"></i><span>Help</span></a></div></div>
+<div class="nav-menu"><a href="index.html" class="nav-link live-link">🏏 Live</a><a href="schedule.html" class="nav-link">Schedule</a><a href="news.html" class="nav-link">News</a><a href="standings.html" class="nav-link">Standings</a><a href="videos.html" class="nav-link">Videos</a><a href="fantasy.html" class="nav-link">Fantasy</a></div></nav>
+
+<main id="main">
+<!-- Player Hero - Visual Dominance, Scale, Figure-Ground (Gestalt) -->
+<section style="background:linear-gradient(135deg,#0A1628,#1C3454);padding:40px 0;color:#fff;">
+<div class="container">
+  <div class="breadcrumbs" style="color:rgba(255,255,255,0.5);"><a href="index.html" style="color:rgba(255,255,255,0.6);">Home</a><span class="sep">›</span><a href="search.html" style="color:rgba(255,255,255,0.6);">Players</a><span class="sep">›</span><span>Virat Kohli</span></div>
+  <div style="display:flex;align-items:center;gap:28px;margin-top:16px;flex-wrap:wrap;">
+    <div style="width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,#C41E3A,#FF4500);display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:900;border:4px solid rgba(255,255,255,0.2);">VK</div>
+    <div style="flex:1;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+        <h1 style="font-size:32px;font-weight:900;">Virat Kohli</h1>
+        <span style="background:rgba(0,200,83,0.15);color:var(--accent);padding:3px 10px;border-radius:100px;font-size:11px;font-weight:700;">ACTIVE</span>
+        <span class="hci-tag">Figure-Ground</span><span class="hci-tag">Visual Dominance</span>
+      </div>
+      <p style="color:rgba(255,255,255,0.6);font-size:14px;">India • Right-hand Bat • RCB (IPL) • Born: Nov 5, 1988</p>
+      <div style="display:flex;gap:12px;margin-top:12px;">
+        <button class="btn btn-primary" onclick="toggleFavorite('virat-kohli')"><i class="fas fa-star"></i> Favorite</button>
+        <button class="btn btn-ghost" onclick="showToast('Sharing player profile...')"><i class="fas fa-share"></i> Share</button>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Career Stats Overview - Mental Model (familiar stat cards) -->
+<section style="background:var(--card);padding:24px 0;border-bottom:1px solid var(--border);">
+<div class="container">
+  <div class="grid-4" style="text-align:center;">
+    <div><div style="font-size:28px;font-weight:900;color:var(--primary);">80</div><div style="font-size:11px;color:var(--text-muted);font-weight:600;">CENTURIES <span class="hci-tag">Scale</span></div></div>
+    <div><div style="font-size:28px;font-weight:900;color:var(--primary);">27,098</div><div style="font-size:11px;color:var(--text-muted);font-weight:600;">INT'L RUNS</div></div>
+    <div><div style="font-size:28px;font-weight:900;color:var(--primary);">52.4</div><div style="font-size:11px;color:var(--text-muted);font-weight:600;">AVG (ODI)</div></div>
+    <div><div style="font-size:28px;font-weight:900;color:var(--primary);">#2</div><div style="font-size:11px;color:var(--text-muted);font-weight:600;">ICC RANKING</div></div>
+  </div>
+</div>
+</section>
+
+<div class="container" style="margin-top:20px;">
+<!-- Tabs - Hick's Law, Tesler's Law (hide complexity) -->
+<div class="tabs" id="player-tabs">
+  <div class="tab active" onclick="switchPlayerTab(this,'overview')">Overview</div>
+  <div class="tab" onclick="switchPlayerTab(this,'batting')">Batting Stats</div>
+  <div class="tab" onclick="switchPlayerTab(this,'ipl')">IPL 2026</div>
+  <div class="tab" onclick="switchPlayerTab(this,'career')">Career</div>
+</div>
+<span class="hci-tag" style="margin-top:8px;display:inline-block;">Tesler's Law: Hide complexity in tabs</span>
+
+<!-- Overview Tab -->
+<div id="tab-overview" class="tab-content" style="padding:20px 0;">
+  <div class="grid-2">
+    <!-- Player Info Card -->
+    <div class="card card-body">
+      <h3 style="font-size:15px;font-weight:700;margin-bottom:14px;">Player Information <span class="hci-tag">Mental Model</span></h3>
+      <div style="display:grid;grid-template-columns:120px 1fr;gap:10px;font-size:13px;">
+        <span style="font-weight:700;color:var(--text-muted);">Full Name</span><span>Virat Kohli</span>
+        <span style="font-weight:700;color:var(--text-muted);">Born</span><span>Nov 5, 1988, Delhi</span>
+        <span style="font-weight:700;color:var(--text-muted);">Role</span><span>Top-order Batter</span>
+        <span style="font-weight:700;color:var(--text-muted);">Batting</span><span>Right-hand</span>
+        <span style="font-weight:700;color:var(--text-muted);">Bowling</span><span>Right-arm Medium</span>
+        <span style="font-weight:700;color:var(--text-muted);">Teams</span><span>India, RCB, Delhi</span>
+        <span style="font-weight:700;color:var(--text-muted);">Debut</span><span>ODI: Aug 18, 2008</span>
+      </div>
+    </div>
+    <!-- Recent Form -->
+    <div class="card card-body">
+      <h3 style="font-size:15px;font-weight:700;margin-bottom:14px;">Recent Scores <span class="hci-tag">Recency Effect</span></h3>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--bg);border-radius:var(--radius-sm);"><span style="font-size:13px;">vs GT (IPL)</span><span style="font-size:18px;font-weight:800;color:var(--accent);">73*</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--bg);border-radius:var(--radius-sm);"><span style="font-size:13px;">vs SRH (IPL)</span><span style="font-size:18px;font-weight:800;">45</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--bg);border-radius:var(--radius-sm);"><span style="font-size:13px;">vs MI (IPL)</span><span style="font-size:18px;font-weight:800;color:var(--accent);">82</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--bg);border-radius:var(--radius-sm);"><span style="font-size:13px;">vs CSK (IPL)</span><span style="font-size:18px;font-weight:800;color:var(--danger);">12</span></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--bg);border-radius:var(--radius-sm);"><span style="font-size:13px;">vs PBKS (IPL)</span><span style="font-size:18px;font-weight:800;color:var(--accent);">101*</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Batting Stats Tab -->
+<div id="tab-batting" class="tab-content" style="padding:20px 0;display:none;">
+  <h3 style="font-size:15px;font-weight:700;margin-bottom:14px;">Career Batting Stats</h3>
+  <div class="card" style="overflow-x:auto;">
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <thead><tr style="background:var(--bg);"><th style="padding:10px 14px;text-align:left;font-weight:700;">Format</th><th style="padding:10px;text-align:center;">M</th><th style="padding:10px;text-align:center;">Runs</th><th style="padding:10px;text-align:center;">HS</th><th style="padding:10px;text-align:center;">Avg</th><th style="padding:10px;text-align:center;">SR</th><th style="padding:10px;text-align:center;">100s</th><th style="padding:10px;text-align:center;">50s</th></tr></thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:10px 14px;font-weight:600;">Test</td><td style="text-align:center;">115</td><td style="text-align:center;font-weight:700;">8,848</td><td style="text-align:center;">254*</td><td style="text-align:center;">48.62</td><td style="text-align:center;">57.2</td><td style="text-align:center;font-weight:700;">29</td><td style="text-align:center;">30</td></tr>
+        <tr style="border-bottom:1px solid var(--border);"><td style="padding:10px 14px;font-weight:600;">ODI</td><td style="text-align:center;">292</td><td style="text-align:center;font-weight:700;">13,906</td><td style="text-align:center;">183</td><td style="text-align:center;color:var(--accent);font-weight:700;">52.38</td><td style="text-align:center;">93.5</td><td style="text-align:center;font-weight:700;">50</td><td style="text-align:center;">72</td></tr>
+        <tr><td style="padding:10px 14px;font-weight:600;">T20I</td><td style="text-align:center;">125</td><td style="text-align:center;font-weight:700;">4,188</td><td style="text-align:center;">122*</td><td style="text-align:center;">52.0</td><td style="text-align:center;">137.9</td><td style="text-align:center;font-weight:700;">1</td><td style="text-align:center;">38</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- IPL 2026 Tab -->
+<div id="tab-ipl" class="tab-content" style="padding:20px 0;display:none;">
+  <h3 style="font-size:15px;font-weight:700;margin-bottom:14px;">IPL 2026 Performance</h3>
+  <div class="grid-4" style="margin-bottom:20px;">
+    <div class="card card-body" style="text-align:center;"><div style="font-size:28px;font-weight:900;color:var(--highlight);">412</div><div style="font-size:11px;color:var(--text-muted);">Runs</div></div>
+    <div class="card card-body" style="text-align:center;"><div style="font-size:28px;font-weight:900;">51.5</div><div style="font-size:11px;color:var(--text-muted);">Average</div></div>
+    <div class="card card-body" style="text-align:center;"><div style="font-size:28px;font-weight:900;">142.7</div><div style="font-size:11px;color:var(--text-muted);">Strike Rate</div></div>
+    <div class="card card-body" style="text-align:center;"><div style="font-size:28px;font-weight:900;color:var(--accent);">1</div><div style="font-size:11px;color:var(--text-muted);">Century</div></div>
+  </div>
+</div>
+
+<!-- Career Tab -->
+<div id="tab-career" class="tab-content" style="padding:20px 0;display:none;">
+  <h3 style="font-size:15px;font-weight:700;margin-bottom:14px;">Career Milestones <span class="hci-tag">Continuity (Gestalt)</span></h3>
+  <div style="display:flex;flex-direction:column;gap:12px;border-left:3px solid var(--accent);padding-left:20px;">
+    <div><div style="font-size:12px;font-weight:700;color:var(--accent);">2026</div><div style="font-size:13px;font-weight:600;">T20 World Cup Winner — Player of the Final</div></div>
+    <div><div style="font-size:12px;font-weight:700;color:var(--accent);">2024</div><div style="font-size:13px;font-weight:600;">50th ODI Century — Fastest to milestone</div></div>
+    <div><div style="font-size:12px;font-weight:700;color:var(--accent);">2023</div><div style="font-size:13px;font-weight:600;">ODI World Cup — 765 runs (Most in tournament)</div></div>
+    <div><div style="font-size:12px;font-weight:700;color:var(--accent);">2018</div><div style="font-size:13px;font-weight:600;">ICC Cricketer of the Year</div></div>
+    <div><div style="font-size:12px;font-weight:700;color:var(--accent);">2008</div><div style="font-size:13px;font-weight:600;">International Debut — ODI vs Sri Lanka</div></div>
+  </div>
+</div>
+</div>
+</main>
+
+<footer style="margin-top:40px;"><div class="container"><div class="footer-bottom"><span>© 2026 CricPulse</span><div class="social-icons"><div class="social-icon"><i class="fab fa-twitter"></i></div><div class="social-icon"><i class="fab fa-youtube"></i></div></div></div></div></footer>
+<div id="toast" class="toast" role="status" aria-live="polite"><i class="fas fa-check-circle" style="color:var(--accent)"></i><span class="toast-msg"></span><button class="undo-btn" style="display:none">Undo</button></div>
+<script src="js/app.js"></script>
+<script>
+function switchPlayerTab(el, tabId) {
+  document.querySelectorAll('#player-tabs .tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+  el.classList.add('active');
+  document.getElementById('tab-' + tabId).style.display = 'block';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings & Accessibility - CricPulse</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+.setting-group { background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:20px;overflow:hidden; }
+.setting-group-header { padding:16px 20px;border-bottom:1px solid var(--border);font-size:15px;font-weight:700;display:flex;align-items:center;gap:10px; }
+.setting-row { display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--border);gap:16px; }
+.setting-row:last-child { border-bottom:none; }
+.setting-label { font-size:13px;font-weight:600; }
+.setting-desc { font-size:12px;color:var(--text-muted);margin-top:2px; }
+.toggle { position:relative;width:48px;height:26px;flex-shrink:0; }
+.toggle input { opacity:0;width:0;height:0; }
+.toggle-slider { position:absolute;inset:0;background:var(--border);border-radius:26px;cursor:pointer;transition:0.3s; }
+.toggle-slider::before { content:'';position:absolute;width:20px;height:20px;border-radius:50%;background:#fff;left:3px;top:3px;transition:0.3s;box-shadow:0 1px 4px rgba(0,0,0,0.2); }
+.toggle input:checked + .toggle-slider { background:var(--accent); }
+.toggle input:checked + .toggle-slider::before { transform:translateX(22px); }
+.font-size-control { display:flex;align-items:center;gap:10px; }
+.font-btn { width:32px;height:32px;border-radius:50%;border:1.5px solid var(--border);background:var(--bg);display:flex;align-items:center;justify-content:center;cursor:pointer;font-weight:700;transition:all 0.2s; }
+.font-btn:hover { border-color:var(--accent);color:var(--accent); }
+.ud-card { display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:var(--radius-sm);background:var(--bg);margin-bottom:8px; }
+.ud-num { width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0; }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="navbar"><div class="nav-top"><a href="index.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-cricket-bat-ball"></i></div>Cric<span>Pulse</span></a><div class="nav-search"><i class="fas fa-search search-icon"></i><input type="search" placeholder="Search..." aria-label="Search"><div id="search-suggestions" style="display:none;position:absolute;top:100%;left:0;right:0;background:var(--card);border-radius:0 0 12px 12px;box-shadow:var(--shadow-hover);z-index:100;"></div></div><div class="nav-actions"><button class="nav-action" onclick="toggleTheme()"><i class="fas fa-moon"></i><span>Theme</span></button><a href="help.html" class="nav-action"><i class="fas fa-question-circle"></i><span>Help</span></a></div></div>
+<div class="nav-menu"><a href="index.html" class="nav-link live-link">🏏 Live</a><a href="schedule.html" class="nav-link">Schedule</a><a href="news.html" class="nav-link">News</a><a href="standings.html" class="nav-link">Standings</a><a href="videos.html" class="nav-link">Videos</a><a href="fantasy.html" class="nav-link">Fantasy</a></div></nav>
+
+<main id="main">
+<section style="background:linear-gradient(135deg,#0A1628,#1C3454);padding:40px 0;color:#fff;text-align:center;">
+  <div class="container">
+    <div style="font-size:48px;margin-bottom:12px;">⚙️</div>
+    <h1 style="font-size:32px;font-weight:900;margin-bottom:8px;">Settings & Accessibility</h1>
+    <p style="color:rgba(255,255,255,0.6);font-size:14px;">Customize your experience — designed for everyone</p>
+    <span class="hci-tag" style="margin-top:8px;">Universal Design 7 Principles</span>
+    <span class="hci-tag">WCAG/POUR</span>
+    <span class="hci-tag">Shneiderman R7: Locus of Control</span>
+  </div>
+</section>
+
+<div class="container" style="padding-top:28px;max-width:720px;">
+
+<!-- Appearance Settings - Flexibility, User Control -->
+<div class="setting-group">
+  <div class="setting-group-header"><i class="fas fa-palette" style="color:var(--accent);"></i> Appearance <span class="hci-tag">Flexibility</span></div>
+  <div class="setting-row">
+    <div><div class="setting-label">Dark Mode</div><div class="setting-desc">Reduce eye strain in low-light environments</div></div>
+    <label class="toggle"><input type="checkbox" id="dark-toggle" onchange="toggleTheme()"><span class="toggle-slider"></span></label>
+  </div>
+  <div class="setting-row">
+    <div><div class="setting-label">High Contrast Mode</div><div class="setting-desc">Increase contrast for better readability (WCAG AAA)</div></div>
+    <label class="toggle"><input type="checkbox" onchange="document.documentElement.setAttribute('data-theme',this.checked?'high-contrast':'light');showToast(this.checked?'High contrast enabled':'Normal contrast')"><span class="toggle-slider"></span></label>
+  </div>
+  <div class="setting-row">
+    <div><div class="setting-label">Font Size</div><div class="setting-desc">Adjust text size for comfortable reading</div></div>
+    <div class="font-size-control">
+      <button class="font-btn" onclick="changeFontSize(-1)" aria-label="Decrease font size">A-</button>
+      <span id="font-size-val" style="font-weight:700;min-width:36px;text-align:center;">16px</span>
+      <button class="font-btn" onclick="changeFontSize(1)" aria-label="Increase font size">A+</button>
+    </div>
+  </div>
+</div>
+
+<!-- Accessibility - Universal Design -->
+<div class="setting-group">
+  <div class="setting-group-header"><i class="fas fa-universal-access" style="color:var(--info);"></i> Accessibility <span class="hci-tag">Universal Design</span></div>
+  <div class="setting-row">
+    <div><div class="setting-label">Reduce Motion</div><div class="setting-desc">Minimize animations for motion-sensitive users</div></div>
+    <label class="toggle"><input type="checkbox" onchange="document.body.style.setProperty('--transition',this.checked?'0s':'0.25s');showToast(this.checked?'Animations reduced':'Animations enabled')"><span class="toggle-slider"></span></label>
+  </div>
+  <div class="setting-row">
+    <div><div class="setting-label">Screen Reader Optimized</div><div class="setting-desc">Enhanced ARIA labels and landmarks</div></div>
+    <label class="toggle"><input type="checkbox" checked disabled><span class="toggle-slider"></span></label>
+  </div>
+  <div class="setting-row">
+    <div><div class="setting-label">Keyboard Navigation</div><div class="setting-desc">Full site navigation with Tab, Enter, and shortcuts</div></div>
+    <label class="toggle"><input type="checkbox" checked disabled><span class="toggle-slider"></span></label>
+  </div>
+  <div class="setting-row">
+    <div><div class="setting-label">Focus Indicators</div><div class="setting-desc">Visible outlines on focused elements</div></div>
+    <label class="toggle"><input type="checkbox" checked disabled><span class="toggle-slider"></span></label>
+  </div>
+</div>
+
+<!-- Notifications - User Control -->
+<div class="setting-group">
+  <div class="setting-group-header"><i class="fas fa-bell" style="color:var(--highlight);"></i> Notifications <span class="hci-tag">Nielsen H3: User Control</span></div>
+  <div class="setting-row">
+    <div><div class="setting-label">Match Start Alerts</div><div class="setting-desc">Get notified when your favorite team plays</div></div>
+    <label class="toggle"><input type="checkbox" checked onchange="showToast(this.checked?'Match alerts ON':'Match alerts OFF')"><span class="toggle-slider"></span></label>
+  </div>
+  <div class="setting-row">
+    <div><div class="setting-label">Wicket Alerts</div><div class="setting-desc">Instant notifications on wickets</div></div>
+    <label class="toggle"><input type="checkbox" checked onchange="showToast(this.checked?'Wicket alerts ON':'Wicket alerts OFF')"><span class="toggle-slider"></span></label>
+  </div>
+  <div class="setting-row">
+    <div><div class="setting-label">News Updates</div><div class="setting-desc">Breaking news and analysis</div></div>
+    <label class="toggle"><input type="checkbox" onchange="showToast(this.checked?'News alerts ON':'News alerts OFF')"><span class="toggle-slider"></span></label>
+  </div>
+</div>
+
+<!-- Data & Privacy - Asimov's Laws -->
+<div class="setting-group">
+  <div class="setting-group-header"><i class="fas fa-shield-alt" style="color:var(--accent-dark);"></i> Privacy & Data <span class="hci-tag">Asimov's Laws</span></div>
+  <div class="setting-row">
+    <div><div class="setting-label">Clear Search History</div><div class="setting-desc">Remove all saved searches (Shneiderman R6: Reversal)</div></div>
+    <button class="btn btn-outline" style="flex-shrink:0;" onclick="if(confirm('Clear all search history?')){showToast('🗑️ Search history cleared')}">Clear</button>
+  </div>
+  <div class="setting-row">
+    <div><div class="setting-label">Clear Favorites</div><div class="setting-desc">Remove all saved favorite teams</div></div>
+    <button class="btn btn-outline" style="flex-shrink:0;" onclick="if(confirm('Remove all favorites?')){localStorage.removeItem('cricpulse-favorites');showToast('🗑️ Favorites cleared')}">Clear</button>
+  </div>
+  <div class="setting-row">
+    <div><div class="setting-label">Reset All Settings</div><div class="setting-desc">Restore default preferences</div></div>
+    <button class="btn btn-outline" style="flex-shrink:0;color:var(--danger);border-color:var(--danger);" onclick="if(confirm('Reset all settings to default?')){localStorage.clear();showToast('✅ All settings reset');location.reload();}">Reset</button>
+  </div>
+</div>
+
+<!-- Universal Design 7 Principles Reference -->
+<div class="card card-body" style="margin-top:8px;">
+  <h3 style="font-size:15px;font-weight:700;margin-bottom:14px;">♿ Universal Design Principles Applied <span class="hci-tag">7 Principles</span></h3>
+  <div class="ud-card"><div class="ud-num">1</div><div><div style="font-size:13px;font-weight:600;">Equitable Use</div><div style="font-size:12px;color:var(--text-muted);">Same content for all users regardless of ability</div></div></div>
+  <div class="ud-card"><div class="ud-num">2</div><div><div style="font-size:13px;font-weight:600;">Flexibility in Use</div><div style="font-size:12px;color:var(--text-muted);">Dark mode, font sizes, reduced motion options</div></div></div>
+  <div class="ud-card"><div class="ud-num">3</div><div><div style="font-size:13px;font-weight:600;">Simple & Intuitive</div><div style="font-size:12px;color:var(--text-muted);">Clear labels, familiar cricket UI patterns</div></div></div>
+  <div class="ud-card"><div class="ud-num">4</div><div><div style="font-size:13px;font-weight:600;">Perceptible Information</div><div style="font-size:12px;color:var(--text-muted);">Status uses color + icon + text (not color alone)</div></div></div>
+  <div class="ud-card"><div class="ud-num">5</div><div><div style="font-size:13px;font-weight:600;">Tolerance for Error</div><div style="font-size:12px;color:var(--text-muted);">Confirmation dialogs, undo actions</div></div></div>
+  <div class="ud-card"><div class="ud-num">6</div><div><div style="font-size:13px;font-weight:600;">Low Physical Effort</div><div style="font-size:12px;color:var(--text-muted);">Keyboard shortcuts, large touch targets</div></div></div>
+  <div class="ud-card"><div class="ud-num">7</div><div><div style="font-size:13px;font-weight:600;">Size & Space for Use</div><div style="font-size:12px;color:var(--text-muted);">Responsive design, scalable typography</div></div></div>
+</div>
+
+</div>
+</main>
+
+<footer style="margin-top:40px;"><div class="container"><div class="footer-bottom"><span>© 2026 CricPulse</span><div class="social-icons"><div class="social-icon"><i class="fab fa-twitter"></i></div><div class="social-icon"><i class="fab fa-youtube"></i></div></div></div></div></footer>
+<div id="toast" class="toast" role="status" aria-live="polite"><i class="fas fa-check-circle" style="color:var(--accent)"></i><span class="toast-msg"></span><button class="undo-btn" style="display:none">Undo</button></div>
+<script src="js/app.js"></script>
+<script>
+// Sync dark mode toggle
+document.addEventListener('DOMContentLoaded', () => {
+  const dt = document.getElementById('dark-toggle');
+  if (dt) dt.checked = document.documentElement.getAttribute('data-theme') === 'dark';
+});
+let currentFontSize = 16;
+function changeFontSize(delta) {
+  currentFontSize = Math.max(12, Math.min(24, currentFontSize + delta));
+  document.documentElement.style.fontSize = currentFontSize + 'px';
+  document.getElementById('font-size-val').textContent = currentFontSize + 'px';
+  showToast('Font size: ' + currentFontSize + 'px');
+}
+</script>
+</body>
+</html>

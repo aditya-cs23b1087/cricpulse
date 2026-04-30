@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fantasy Cricket Predictor - CricPulse</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+.prediction-card { background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;transition:all 0.25s; }
+.prediction-card:hover { box-shadow:var(--shadow-hover); }
+.team-pick { display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:var(--radius-sm);cursor:pointer;transition:all 0.2s;border:2px solid var(--border); }
+.team-pick:hover { border-color:var(--accent);background:rgba(0,200,83,0.04); }
+.team-pick.selected { border-color:var(--accent);background:rgba(0,200,83,0.08); }
+.team-pick.selected::after { content:'✓';margin-left:auto;color:var(--accent);font-weight:800;font-size:18px; }
+.step-indicator { display:flex;align-items:center;gap:0;margin-bottom:28px; }
+.step { display:flex;align-items:center;gap:8px; }
+.step-num { width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;background:var(--border);color:var(--text-muted);transition:all 0.2s; }
+.step.active .step-num { background:var(--accent);color:#fff; }
+.step.done .step-num { background:var(--accent-dark);color:#fff; }
+.step-label { font-size:12px;font-weight:600;color:var(--text-muted); }
+.step.active .step-label { color:var(--text); }
+.step-line { flex:1;height:2px;background:var(--border);margin:0 8px; }
+.step-line.done { background:var(--accent); }
+.leaderboard-row { display:flex;align-items:center;gap:14px;padding:12px 16px;border-bottom:1px solid var(--border);font-size:13px; }
+.leaderboard-row:last-child { border-bottom:none; }
+.lb-rank { width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0; }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="navbar"><div class="nav-top"><a href="index.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-cricket-bat-ball"></i></div>Cric<span>Pulse</span></a><div class="nav-search"><i class="fas fa-search search-icon"></i><input type="search" placeholder="Search..." aria-label="Search"><div id="search-suggestions" style="display:none;position:absolute;top:100%;left:0;right:0;background:var(--card);border-radius:0 0 12px 12px;box-shadow:var(--shadow-hover);z-index:100;"></div></div><div class="nav-actions"><button class="nav-action" onclick="toggleTheme()"><i class="fas fa-moon"></i><span>Theme</span></button><a href="help.html" class="nav-action"><i class="fas fa-question-circle"></i><span>Help</span></a></div></div>
+<div class="nav-menu"><a href="index.html" class="nav-link live-link">🏏 Live</a><a href="schedule.html" class="nav-link">Schedule</a><a href="news.html" class="nav-link">News</a><a href="standings.html" class="nav-link">Standings</a><a href="videos.html" class="nav-link">Videos</a><a href="fantasy.html" class="nav-link active">Fantasy</a></div></nav>
+
+<main id="main">
+<!-- Hero - Persuasion (Scarcity, Social Proof) -->
+<section style="background:linear-gradient(135deg,#0A1628,#1C3454);padding:40px 0;color:#fff;text-align:center;">
+  <div class="container">
+    <div style="font-size:48px;margin-bottom:12px;">🎯</div>
+    <h1 style="font-size:32px;font-weight:900;margin-bottom:8px;">Fantasy Cricket Predictor</h1>
+    <p style="color:rgba(255,255,255,0.6);font-size:14px;margin-bottom:6px;">Predict match outcomes & earn bragging rights!</p>
+    <div style="display:flex;gap:16px;justify-content:center;margin-top:16px;flex-wrap:wrap;">
+      <span style="background:rgba(255,107,53,0.15);color:var(--highlight);padding:6px 14px;border-radius:100px;font-size:12px;font-weight:700;">🔥 2,847 predictions today <span class="hci-tag">Social Proof</span></span>
+      <span style="background:rgba(231,76,60,0.15);color:var(--danger);padding:6px 14px;border-radius:100px;font-size:12px;font-weight:700;">⏰ Closes in 2h 15m <span class="hci-tag">Scarcity</span></span>
+    </div>
+  </div>
+</section>
+
+<div class="container" style="padding-top:28px;">
+<div style="display:grid;grid-template-columns:1.5fr 1fr;gap:24px;">
+
+<!-- Prediction Flow - Closure (Step Indicator), Shneiderman R4 -->
+<div>
+  <div class="step-indicator">
+    <div class="step active" id="s1"><div class="step-num">1</div><span class="step-label">Pick Winner</span></div>
+    <div class="step-line" id="sl1"></div>
+    <div class="step" id="s2"><div class="step-num">2</div><span class="step-label">Predict Score</span></div>
+    <div class="step-line" id="sl2"></div>
+    <div class="step" id="s3"><div class="step-num">3</div><span class="step-label">Pick MVP</span></div>
+  </div>
+  <span class="hci-tag">Closure: Step indicator shows progress</span>
+  <span class="hci-tag">Shneiderman R4</span>
+
+  <!-- Step 1: Pick Winner -->
+  <div id="step1" class="prediction-card" style="margin-top:16px;">
+    <h2 style="font-size:16px;font-weight:700;margin-bottom:6px;">🏏 Who will win?</h2>
+    <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">GT vs RCB • 42nd Match • IPL 2026</p>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div class="team-pick" id="pick-gt" onclick="pickTeam('gt')">
+        <div class="team-logo" style="background:linear-gradient(135deg,#1C3879,#607EAA)">GT</div>
+        <div><div style="font-size:15px;font-weight:700;">Gujarat Titans</div><div style="font-size:12px;color:var(--text-muted);">43% picked</div></div>
+      </div>
+      <div class="team-pick" id="pick-rcb" onclick="pickTeam('rcb')">
+        <div class="team-logo" style="background:linear-gradient(135deg,#C41E3A,#FF4500)">RCB</div>
+        <div><div style="font-size:15px;font-weight:700;">Royal Challengers Bengaluru</div><div style="font-size:12px;color:var(--text-muted);">57% picked</div></div>
+      </div>
+    </div>
+    <span class="hci-tag" style="margin-top:12px;">Commitment (Cialdini): Investment increases engagement</span>
+  </div>
+
+  <!-- Step 2: Predict Score (hidden initially) -->
+  <div id="step2" class="prediction-card" style="margin-top:16px;display:none;">
+    <h2 style="font-size:16px;font-weight:700;margin-bottom:6px;">📊 Predict winning score</h2>
+    <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">Closest prediction wins bonus points!</p>
+    <div style="display:flex;gap:12px;align-items:center;">
+      <input type="range" min="120" max="260" value="180" id="score-slider" oninput="document.getElementById('score-val').textContent=this.value" style="flex:1;accent-color:var(--accent);height:8px;">
+      <div style="font-size:28px;font-weight:900;color:var(--accent);min-width:60px;text-align:center;" id="score-val">180</div>
+    </div>
+    <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-muted);margin-top:4px;"><span>120</span><span>260</span></div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:16px;" onclick="goStep3()"><i class="fas fa-arrow-right"></i> Next: Pick MVP</button>
+    <span class="hci-tag" style="margin-top:10px;">Form-Fill Interaction Paradigm</span>
+  </div>
+
+  <!-- Step 3: Pick MVP (hidden initially) -->
+  <div id="step3" class="prediction-card" style="margin-top:16px;display:none;">
+    <h2 style="font-size:16px;font-weight:700;margin-bottom:6px;">⭐ Pick Man of the Match</h2>
+    <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">Choose wisely — correct MVP pick = 3x points!</p>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div class="team-pick" onclick="pickMVP(this)"><div style="width:32px;height:32px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:800;">VK</div><div><div style="font-size:14px;font-weight:600;">Virat Kohli</div><div style="font-size:11px;color:var(--text-muted);">RCB • 28% picked</div></div></div>
+      <div class="team-pick" onclick="pickMVP(this)"><div style="width:32px;height:32px;border-radius:50%;background:var(--info);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:800;">SG</div><div><div style="font-size:14px;font-weight:600;">Shubman Gill</div><div style="font-size:11px;color:var(--text-muted);">GT • 22% picked</div></div></div>
+      <div class="team-pick" onclick="pickMVP(this)"><div style="width:32px;height:32px;border-radius:50%;background:var(--highlight);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:800;">MS</div><div><div style="font-size:14px;font-weight:600;">Mohammed Siraj</div><div style="font-size:11px;color:var(--text-muted);">RCB • 18% picked</div></div></div>
+    </div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:16px;" onclick="submitPrediction()"><i class="fas fa-check"></i> Submit Prediction</button>
+  </div>
+
+  <!-- Success (hidden) -->
+  <div id="success-msg" style="display:none;text-align:center;padding:40px 20px;">
+    <div style="font-size:56px;margin-bottom:12px;">🎉</div>
+    <h2 style="font-size:22px;font-weight:800;margin-bottom:8px;color:var(--accent);">Prediction Submitted!</h2>
+    <p style="font-size:14px;color:var(--text-muted);margin-bottom:16px;">You'll earn points when the match ends. Good luck!</p>
+    <a href="index.html" class="btn btn-outline"><i class="fas fa-home"></i> Back to Home</a>
+    <span class="hci-tag" style="margin-top:12px;display:block;">Shneiderman R3: Informative Feedback</span>
+  </div>
+</div>
+
+<!-- Sidebar: Leaderboard - Social Proof, Authority -->
+<div>
+  <div class="card" style="margin-bottom:16px;">
+    <div style="padding:16px;border-bottom:1px solid var(--border);"><h3 style="font-size:15px;font-weight:700;">🏅 Leaderboard <span class="hci-tag">Authority</span></h3></div>
+    <div class="leaderboard-row"><div class="lb-rank" style="background:linear-gradient(135deg,#FFD700,#FFA500);">1</div><div style="flex:1;"><div style="font-weight:700;">CricketKing99</div><div style="font-size:11px;color:var(--text-muted);">12 correct / 14 predictions</div></div><span style="font-weight:800;color:var(--gold);">2,840 pts</span></div>
+    <div class="leaderboard-row"><div class="lb-rank" style="background:linear-gradient(135deg,#C0C0C0,#A0A0A0);">2</div><div style="flex:1;"><div style="font-weight:700;">SixerQueen</div><div style="font-size:11px;color:var(--text-muted);">11 correct / 14</div></div><span style="font-weight:800;">2,560 pts</span></div>
+    <div class="leaderboard-row"><div class="lb-rank" style="background:linear-gradient(135deg,#CD7F32,#8B5E3C);">3</div><div style="flex:1;"><div style="font-weight:700;">BowlerBoss</div><div style="font-size:11px;color:var(--text-muted);">10 correct / 14</div></div><span style="font-weight:800;">2,210 pts</span></div>
+    <div class="leaderboard-row"><div class="lb-rank" style="background:var(--bg);color:var(--text);">4</div><div style="flex:1;"><div style="font-weight:700;">SpinWizard</div><div style="font-size:11px;color:var(--text-muted);">9 correct / 13</div></div><span style="font-weight:800;">1,980 pts</span></div>
+    <div class="leaderboard-row"><div class="lb-rank" style="background:var(--bg);color:var(--text);">5</div><div style="flex:1;"><div style="font-weight:700;">You</div><div style="font-size:11px;color:var(--text-muted);">7 correct / 12</div></div><span style="font-weight:800;color:var(--accent);">1,540 pts</span></div>
+  </div>
+
+  <div class="card card-body">
+    <h3 style="font-size:15px;font-weight:700;margin-bottom:10px;">📊 Today's Poll</h3>
+    <p style="font-size:13px;color:var(--text-muted);margin-bottom:12px;">Who will be the top scorer tonight?</p>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="background:var(--bg);padding:8px 14px;border-radius:var(--radius-sm);font-size:13px;cursor:pointer;position:relative;overflow:hidden;" onclick="this.style.background='rgba(0,200,83,0.1)';showToast('Vote recorded!')"><div style="position:absolute;left:0;top:0;bottom:0;width:42%;background:rgba(0,200,83,0.1);border-radius:var(--radius-sm);"></div><span style="position:relative;font-weight:600;">Virat Kohli</span><span style="position:relative;float:right;color:var(--text-muted);">42%</span></div>
+      <div style="background:var(--bg);padding:8px 14px;border-radius:var(--radius-sm);font-size:13px;cursor:pointer;" onclick="showToast('Vote recorded!')"><span style="font-weight:600;">Shubman Gill</span><span style="float:right;color:var(--text-muted);">31%</span></div>
+      <div style="background:var(--bg);padding:8px 14px;border-radius:var(--radius-sm);font-size:13px;cursor:pointer;" onclick="showToast('Vote recorded!')"><span style="font-weight:600;">Faf du Plessis</span><span style="float:right;color:var(--text-muted);">27%</span></div>
+    </div>
+    <span class="hci-tag" style="margin-top:8px;">Conversational UI Paradigm</span>
+  </div>
+</div>
+
+</div>
+</div>
+</main>
+
+<footer style="margin-top:40px;"><div class="container"><div class="footer-bottom"><span>© 2026 CricPulse</span><div class="social-icons"><div class="social-icon"><i class="fab fa-twitter"></i></div><div class="social-icon"><i class="fab fa-youtube"></i></div></div></div></div></footer>
+<div id="toast" class="toast" role="status" aria-live="polite"><i class="fas fa-check-circle" style="color:var(--accent)"></i><span class="toast-msg"></span><button class="undo-btn" style="display:none">Undo</button></div>
+<script src="js/app.js"></script>
+<script>
+function pickTeam(team) {
+  document.querySelectorAll('.team-pick').forEach(p => p.classList.remove('selected'));
+  document.getElementById('pick-'+team).classList.add('selected');
+  // Move to step 2
+  setTimeout(() => {
+    document.getElementById('s1').classList.remove('active');
+    document.getElementById('s1').classList.add('done');
+    document.getElementById('sl1').classList.add('done');
+    document.getElementById('s2').classList.add('active');
+    document.getElementById('step2').style.display = '';
+    showToast('✅ Team picked! Now predict the score.');
+  }, 400);
+}
+function goStep3() {
+  document.getElementById('s2').classList.remove('active');
+  document.getElementById('s2').classList.add('done');
+  document.getElementById('sl2').classList.add('done');
+  document.getElementById('s3').classList.add('active');
+  document.getElementById('step3').style.display = '';
+  showToast('✅ Score predicted! Now pick MVP.');
+}
+function pickMVP(el) {
+  document.querySelectorAll('#step3 .team-pick').forEach(p => p.classList.remove('selected'));
+  el.classList.add('selected');
+}
+function submitPrediction() {
+  document.getElementById('step1').style.display = 'none';
+  document.getElementById('step2').style.display = 'none';
+  document.getElementById('step3').style.display = 'none';
+  document.querySelector('.step-indicator').style.display = 'none';
+  document.getElementById('success-msg').style.display = '';
+  showToast('🎉 Prediction submitted successfully!');
+}
+</script>
+</body>
+</html>

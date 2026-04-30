@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPL 2026 Points Table - CricPulse</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+.standings-table { width:100%; border-collapse:collapse; font-size:13px; }
+.standings-table th { padding:12px 14px; text-align:left; font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color:var(--text-muted); background:var(--bg); border-bottom:2px solid var(--border); }
+.standings-table td { padding:12px 14px; border-bottom:1px solid var(--border); }
+.standings-table tr:hover { background:rgba(0,200,83,0.04); }
+.standings-table tr.qualified { background:rgba(0,200,83,0.06); }
+.standings-table tr.eliminated { opacity:0.55; }
+.rank-cell { font-weight:800; font-size:15px; width:40px; text-align:center; }
+.team-cell { display:flex; align-items:center; gap:10px; font-weight:600; }
+.nrr-pos { color:var(--accent); font-weight:600; }
+.nrr-neg { color:var(--danger); font-weight:600; }
+.form-dot { width:20px; height:20px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:9px; font-weight:800; color:#fff; }
+.form-w { background:var(--accent); }
+.form-l { background:var(--danger); }
+.qualifier-line { border-bottom:2px dashed var(--accent) !important; }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="navbar"><div class="nav-top"><a href="index.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-cricket-bat-ball"></i></div>Cric<span>Pulse</span></a><div class="nav-search"><i class="fas fa-search search-icon"></i><input type="search" placeholder="Search..." aria-label="Search"><div id="search-suggestions" style="display:none;position:absolute;top:100%;left:0;right:0;background:var(--card);border-radius:0 0 12px 12px;box-shadow:var(--shadow-hover);z-index:100;"></div></div><div class="nav-actions"><button class="nav-action" onclick="toggleTheme()"><i class="fas fa-moon"></i><span>Theme</span></button><a href="help.html" class="nav-action"><i class="fas fa-question-circle"></i><span>Help</span></a></div></div>
+<div class="nav-menu"><a href="index.html" class="nav-link live-link">🏏 Live</a><a href="schedule.html" class="nav-link">Schedule</a><a href="news.html" class="nav-link">News</a><a href="standings.html" class="nav-link active">Standings</a><a href="videos.html" class="nav-link">Videos</a><a href="fantasy.html" class="nav-link">Fantasy</a></div></nav>
+
+<main id="main">
+<div class="container">
+<div class="breadcrumbs"><a href="index.html">Home</a><span class="sep">›</span><a href="standings.html">IPL 2026</a><span class="sep">›</span><span>Points Table</span></div>
+
+<div class="section-header" style="margin-top:8px;">
+  <div><h1 class="section-title">🏆 Points Table <span class="hci-tag">Visual Balance</span><span class="hci-tag">Gestalt Similarity</span></h1><p class="section-sub">IPL 2026 — Updated after Match 41</p></div>
+</div>
+
+<!-- Legend - Recognition over Recall (Nielsen H6) -->
+<div style="display:flex;gap:16px;margin-bottom:16px;font-size:12px;color:var(--text-muted);flex-wrap:wrap;">
+  <span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--accent);margin-right:4px;"></span>Qualified / Top 4</span>
+  <span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--danger);margin-right:4px;"></span>Eliminated</span>
+  <span><span class="form-dot form-w" style="width:14px;height:14px;font-size:8px;">W</span> Win</span>
+  <span><span class="form-dot form-l" style="width:14px;height:14px;font-size:8px;">L</span> Loss</span>
+  <span class="hci-tag">Nielsen H6: Recognition</span>
+</div>
+
+<!-- Points Table - Visual Balance, Scale, Dominance -->
+<div class="card" style="overflow-x:auto;">
+<table class="standings-table">
+  <thead><tr><th>#</th><th>Team</th><th style="text-align:center;">M</th><th style="text-align:center;">W</th><th style="text-align:center;">L</th><th style="text-align:center;">NR</th><th style="text-align:center;">NRR</th><th style="text-align:center;">Pts</th><th>Form</th></tr></thead>
+  <tbody>
+    <tr class="qualified"><td class="rank-cell">1</td><td><div class="team-cell"><div class="team-logo" style="width:28px;height:28px;font-size:11px;background:linear-gradient(135deg,#FF6B00,#FF9933)">SRH</div>Sunrisers Hyderabad</div></td><td style="text-align:center;">9</td><td style="text-align:center;font-weight:700;">7</td><td style="text-align:center;">2</td><td style="text-align:center;">0</td><td class="nrr-pos" style="text-align:center;">+1.284</td><td style="text-align:center;font-weight:900;font-size:16px;color:var(--accent);">14</td><td><span class="form-dot form-w">W</span> <span class="form-dot form-w">W</span> <span class="form-dot form-w">W</span> <span class="form-dot form-w">W</span> <span class="form-dot form-w">W</span></td></tr>
+    <tr class="qualified"><td class="rank-cell">2</td><td><div class="team-cell"><div class="team-logo" style="width:28px;height:28px;font-size:11px;background:linear-gradient(135deg,#C41E3A,#FF4500)">RCB</div>Royal Challengers</div></td><td style="text-align:center;">9</td><td style="text-align:center;font-weight:700;">6</td><td style="text-align:center;">3</td><td style="text-align:center;">0</td><td class="nrr-pos" style="text-align:center;">+0.856</td><td style="text-align:center;font-weight:900;font-size:16px;">12</td><td><span class="form-dot form-w">W</span> <span class="form-dot form-l">L</span> <span class="form-dot form-w">W</span> <span class="form-dot form-w">W</span> <span class="form-dot form-w">W</span></td></tr>
+    <tr class="qualified"><td class="rank-cell">3</td><td><div class="team-cell"><div class="team-logo" style="width:28px;height:28px;font-size:11px;background:linear-gradient(135deg,#FCCA00,#F37021)">CSK</div>Chennai Super Kings</div></td><td style="text-align:center;">8</td><td style="text-align:center;font-weight:700;">6</td><td style="text-align:center;">2</td><td style="text-align:center;">0</td><td class="nrr-pos" style="text-align:center;">+0.643</td><td style="text-align:center;font-weight:900;font-size:16px;">12</td><td><span class="form-dot form-w">W</span> <span class="form-dot form-w">W</span> <span class="form-dot form-l">L</span> <span class="form-dot form-w">W</span> <span class="form-dot form-w">W</span></td></tr>
+    <tr class="qualified qualifier-line"><td class="rank-cell">4</td><td><div class="team-cell"><div class="team-logo" style="width:28px;height:28px;font-size:11px;background:linear-gradient(135deg,#EA1A85,#254AA5)">RR</div>Rajasthan Royals</div></td><td style="text-align:center;">9</td><td style="text-align:center;font-weight:700;">5</td><td style="text-align:center;">4</td><td style="text-align:center;">0</td><td class="nrr-pos" style="text-align:center;">+0.321</td><td style="text-align:center;font-weight:900;font-size:16px;">10</td><td><span class="form-dot form-w">W</span> <span class="form-dot form-l">L</span> <span class="form-dot form-w">W</span> <span class="form-dot form-l">L</span> <span class="form-dot form-w">W</span></td></tr>
+    <tr><td class="rank-cell">5</td><td><div class="team-cell"><div class="team-logo" style="width:28px;height:28px;font-size:11px;background:linear-gradient(135deg,#3A225D,#7B3FA0)">KKR</div>Kolkata Knight Riders</div></td><td style="text-align:center;">8</td><td style="text-align:center;font-weight:700;">5</td><td style="text-align:center;">3</td><td style="text-align:center;">0</td><td class="nrr-pos" style="text-align:center;">+0.154</td><td style="text-align:center;font-weight:900;font-size:16px;">10</td><td><span class="form-dot form-l">L</span> <span class="form-dot form-w">W</span> <span class="form-dot form-w">W</span> <span class="form-dot form-w">W</span> <span class="form-dot form-l">L</span></td></tr>
+    <tr><td class="rank-cell">6</td><td><div class="team-cell"><div class="team-logo" style="width:28px;height:28px;font-size:11px;background:linear-gradient(135deg,#1C3879,#607EAA)">GT</div>Gujarat Titans</div></td><td style="text-align:center;">8</td><td style="text-align:center;font-weight:700;">4</td><td style="text-align:center;">4</td><td style="text-align:center;">0</td><td class="nrr-neg" style="text-align:center;">-0.128</td><td style="text-align:center;font-weight:900;font-size:16px;">8</td><td><span class="form-dot form-l">L</span> <span class="form-dot form-w">W</span> <span class="form-dot form-l">L</span> <span class="form-dot form-w">W</span> <span class="form-dot form-l">L</span></td></tr>
+    <tr><td class="rank-cell">7</td><td><div class="team-cell"><div class="team-logo" style="width:28px;height:28px;font-size:11px;background:linear-gradient(135deg,#004C93,#17479E)">DC</div>Delhi Capitals</div></td><td style="text-align:center;">8</td><td style="text-align:center;font-weight:700;">4</td><td style="text-align:center;">4</td><td style="text-align:center;">0</td><td class="nrr-neg" style="text-align:center;">-0.342</td><td style="text-align:center;font-weight:900;font-size:16px;">8</td><td><span class="form-dot form-l">L</span> <span class="form-dot form-l">L</span> <span class="form-dot form-w">W</span> <span class="form-dot form-w">W</span> <span class="form-dot form-l">L</span></td></tr>
+    <tr><td class="rank-cell">8</td><td><div class="team-cell"><div class="team-logo" style="width:28px;height:28px;font-size:11px;background:linear-gradient(135deg,#005DA0,#00AEEF)">LSG</div>Lucknow Super Giants</div></td><td style="text-align:center;">8</td><td style="text-align:center;font-weight:700;">3</td><td style="text-align:center;">5</td><td style="text-align:center;">0</td><td class="nrr-neg" style="text-align:center;">-0.456</td><td style="text-align:center;font-weight:900;font-size:16px;">6</td><td><span class="form-dot form-w">W</span> <span class="form-dot form-l">L</span> <span class="form-dot form-l">L</span> <span class="form-dot form-l">L</span> <span class="form-dot form-w">W</span></td></tr>
+    <tr class="eliminated"><td class="rank-cell">9</td><td><div class="team-cell"><div class="team-logo" style="width:28px;height:28px;font-size:11px;background:linear-gradient(135deg,#D71920,#ED1C24)">PBKS</div>Punjab Kings</div></td><td style="text-align:center;">9</td><td style="text-align:center;font-weight:700;">2</td><td style="text-align:center;">7</td><td style="text-align:center;">0</td><td class="nrr-neg" style="text-align:center;">-0.923</td><td style="text-align:center;font-weight:900;font-size:16px;">4</td><td><span class="form-dot form-l">L</span> <span class="form-dot form-l">L</span> <span class="form-dot form-l">L</span> <span class="form-dot form-w">W</span> <span class="form-dot form-l">L</span></td></tr>
+    <tr class="eliminated"><td class="rank-cell">10</td><td><div class="team-cell"><div class="team-logo" style="width:28px;height:28px;font-size:11px;background:linear-gradient(135deg,#004BA0,#1A73E8)">MI</div>Mumbai Indians</div></td><td style="text-align:center;">9</td><td style="text-align:center;font-weight:700;">2</td><td style="text-align:center;">7</td><td style="text-align:center;">0</td><td class="nrr-neg" style="text-align:center;">-1.105</td><td style="text-align:center;font-weight:900;font-size:16px;">4</td><td><span class="form-dot form-l">L</span> <span class="form-dot form-l">L</span> <span class="form-dot form-l">L</span> <span class="form-dot form-l">L</span> <span class="form-dot form-l">L</span></td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- Key Stats - Visual Dominance, Scale -->
+<h2 style="font-size:16px;font-weight:700;margin:28px 0 14px;">🏅 Cap Holders <span class="hci-tag">Visual Dominance</span><span class="hci-tag">Scale</span></h2>
+<div class="grid-2">
+  <a href="player.html" class="card card-body" style="display:flex;align-items:center;gap:16px;">
+    <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#FF6B00,#FF9933);display:flex;align-items:center;justify-content:center;font-size:24px;">🧡</div>
+    <div><div style="font-size:11px;font-weight:700;color:var(--highlight);text-transform:uppercase;">Orange Cap</div><div style="font-size:16px;font-weight:800;">Travis Head</div><div style="font-size:13px;color:var(--text-muted);">SRH • 487 runs (9 matches)</div></div>
+  </a>
+  <a href="player.html" class="card card-body" style="display:flex;align-items:center;gap:16px;">
+    <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#7B3FA0,#9B59B6);display:flex;align-items:center;justify-content:center;font-size:24px;">💜</div>
+    <div><div style="font-size:11px;font-weight:700;color:#9B59B6;text-transform:uppercase;">Purple Cap</div><div style="font-size:16px;font-weight:800;">Jasprit Bumrah</div><div style="font-size:13px;color:var(--text-muted);">MI • 18 wickets (9 matches)</div></div>
+  </a>
+</div>
+
+</div>
+</main>
+
+<footer style="margin-top:40px;"><div class="container"><div class="footer-bottom"><span>© 2026 CricPulse</span><div class="social-icons"><div class="social-icon"><i class="fab fa-twitter"></i></div><div class="social-icon"><i class="fab fa-youtube"></i></div></div></div></div></footer>
+<div id="toast" class="toast" role="status" aria-live="polite"><i class="fas fa-check-circle" style="color:var(--accent)"></i><span class="toast-msg"></span><button class="undo-btn" style="display:none">Undo</button></div>
+<script src="js/app.js"></script>
+</body>
+</html>

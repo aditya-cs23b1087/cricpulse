@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cricket News - CricPulse</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="navbar"><div class="nav-top"><a href="index.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-cricket-bat-ball"></i></div>Cric<span>Pulse</span></a><div class="nav-search"><i class="fas fa-search search-icon"></i><input type="search" placeholder="Search news..." aria-label="Search"><div id="search-suggestions" style="display:none;position:absolute;top:100%;left:0;right:0;background:var(--card);border-radius:0 0 12px 12px;box-shadow:var(--shadow-hover);z-index:100;"></div></div><div class="nav-actions"><button class="nav-action" onclick="toggleTheme()"><i class="fas fa-moon"></i><span>Theme</span></button><a href="help.html" class="nav-action"><i class="fas fa-question-circle"></i><span>Help</span></a></div></div>
+<div class="nav-menu"><a href="index.html" class="nav-link live-link">🏏 Live</a><a href="schedule.html" class="nav-link">Schedule</a><a href="news.html" class="nav-link active">News</a><a href="standings.html" class="nav-link">Standings</a><a href="videos.html" class="nav-link">Videos</a><a href="fantasy.html" class="nav-link">Fantasy</a></div></nav>
+
+<main id="main">
+<div class="container">
+<div class="breadcrumbs"><a href="index.html">Home</a><span class="sep">›</span><span>News</span></div>
+
+<!-- F-Pattern Layout -->
+<div class="section-header" style="margin-top:8px;"><div><h1 class="section-title">📰 Cricket News <span class="hci-tag">F-Pattern</span><span class="hci-tag">Inverted Pyramid</span></h1><p class="section-sub">Latest stories, analysis and opinions from the cricket world</p></div></div>
+
+<!-- News Filter Tabs - Hick's Law -->
+<div class="tabs" style="margin-bottom:24px;">
+  <div class="tab active" onclick="filterNews(this,'all')">All</div>
+  <div class="tab" onclick="filterNews(this,'ipl')">IPL 2026</div>
+  <div class="tab" onclick="filterNews(this,'intl')">International</div>
+  <div class="tab" onclick="filterNews(this,'analysis')">Analysis</div>
+  <div class="tab" onclick="filterNews(this,'women')">Women's Cricket</div>
+</div>
+
+<!-- Featured Story - Visual Dominance, Scale -->
+<div class="card animate-on-scroll" style="margin-bottom:24px;cursor:pointer;" onclick="showToast('Opening article...')">
+  <div style="height:240px;background:linear-gradient(135deg,#0A1628 0%,#1C3454 100%);display:flex;align-items:center;justify-content:center;position:relative;">
+    <i class="fas fa-newspaper" style="font-size:60px;color:rgba(255,255,255,0.15);"></i>
+    <div style="position:absolute;top:16px;left:16px;display:flex;gap:8px;">
+      <span style="background:var(--danger);color:#fff;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700;">BREAKING</span>
+      <span style="background:rgba(0,0,0,0.4);color:#fff;padding:4px 12px;border-radius:100px;font-size:11px;">42 min ago</span>
+    </div>
+  </div>
+  <div class="card-body" style="padding:20px;">
+    <h2 style="font-size:22px;font-weight:800;margin-bottom:8px;line-height:1.3;">Riyan Parag cops hefty fine for dressing room vaping incident</h2>
+    <p style="font-size:14px;color:var(--text-muted);line-height:1.6;margin-bottom:12px;">BCCI takes strict action after viral footage from the IPL match. The incident has sparked a wider debate about player conduct...</p>
+    <div style="display:flex;align-items:center;gap:12px;font-size:12px;color:var(--text-muted);"><span><i class="fas fa-eye"></i> 2.1M views</span><span><i class="fas fa-comment"></i> 342 comments</span><span><i class="fas fa-share"></i> Share</span></div>
+  </div>
+</div>
+
+<!-- News Grid - Gestalt Similarity -->
+<div style="display:grid;grid-template-columns:2fr 1fr;gap:24px;">
+  <!-- Main Column - Primacy position -->
+  <div style="display:flex;flex-direction:column;gap:16px;">
+    <div class="card animate-on-scroll" style="display:flex;gap:16px;padding:16px;cursor:pointer;" data-cat="ipl" onclick="showToast('Opening article...')">
+      <div style="width:140px;height:100px;border-radius:var(--radius-sm);background:linear-gradient(135deg,#FF6B00,#FF9933);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.3);font-size:24px;"><i class="fas fa-chart-line"></i></div>
+      <div><span style="font-size:10px;font-weight:700;color:var(--highlight);text-transform:uppercase;">Analysis • 4h ago</span><h3 style="font-size:15px;font-weight:700;margin:4px 0;line-height:1.35;">SRH's fifth straight win — Head & Klaasen dismantle MI</h3><p style="font-size:13px;color:var(--text-muted);">The orange army continues their dominant run with another clinical chase...</p></div>
+    </div>
+    <div class="card animate-on-scroll" style="display:flex;gap:16px;padding:16px;cursor:pointer;" data-cat="ipl" onclick="showToast('Opening article...')">
+      <div style="width:140px;height:100px;border-radius:var(--radius-sm);background:linear-gradient(135deg,#00C853,#00963F);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.3);font-size:24px;"><i class="fas fa-trophy"></i></div>
+      <div><span style="font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;">IPL • 7h ago</span><h3 style="font-size:15px;font-weight:700;margin:4px 0;line-height:1.35;">RCB return to title turf as GT face batting-depth test</h3><p style="font-size:13px;color:var(--text-muted);">Can Gujarat's middle order step up against an in-form RCB attack?</p></div>
+    </div>
+    <div class="card animate-on-scroll" style="display:flex;gap:16px;padding:16px;cursor:pointer;" data-cat="ipl" onclick="showToast('Opening article...')">
+      <div style="width:140px;height:100px;border-radius:var(--radius-sm);background:linear-gradient(135deg,#E74C3C,#C0392B);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.3);font-size:24px;"><i class="fas fa-exclamation-triangle"></i></div>
+      <div><span style="font-size:10px;font-weight:700;color:var(--danger);text-transform:uppercase;">Update • 14h ago</span><h3 style="font-size:15px;font-weight:700;margin:4px 0;line-height:1.35;">MI not out yet, insists Pollard despite mounting losses</h3><p style="font-size:13px;color:var(--text-muted);">Mumbai Indians coach remains defiant as playoff hopes hang by a thread.</p></div>
+    </div>
+    <div class="card animate-on-scroll" style="display:flex;gap:16px;padding:16px;cursor:pointer;" data-cat="intl" onclick="showToast('Opening article...')">
+      <div style="width:140px;height:100px;border-radius:var(--radius-sm);background:linear-gradient(135deg,#3498DB,#2980B9);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.3);font-size:24px;"><i class="fas fa-globe"></i></div>
+      <div><span style="font-size:10px;font-weight:700;color:var(--info);text-transform:uppercase;">International • 19h ago</span><h3 style="font-size:15px;font-weight:700;margin:4px 0;line-height:1.35;">Nahid Rana granted NOC to play in PSL final</h3><p style="font-size:13px;color:var(--text-muted);">Bangladesh Cricket Board clears the fast bowler for the marquee event.</p></div>
+    </div>
+    <div class="card animate-on-scroll" style="display:flex;gap:16px;padding:16px;cursor:pointer;" data-cat="women" onclick="showToast('Opening article...')">
+      <div style="width:140px;height:100px;border-radius:var(--radius-sm);background:linear-gradient(135deg,#a18cd1,#fbc2eb);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.3);font-size:24px;"><i class="fas fa-female"></i></div>
+      <div><span style="font-size:10px;font-weight:700;color:#a18cd1;text-transform:uppercase;">Women's • 1d ago</span><h3 style="font-size:15px;font-weight:700;margin:4px 0;line-height:1.35;">Bates, Devine headline NZ squad for Women's T20 World Cup</h3><p style="font-size:13px;color:var(--text-muted);">Experienced trio set for one last World Cup campaign together.</p></div>
+    </div>
+  </div>
+  <!-- Sidebar - Recency Effect -->
+  <div>
+    <div class="card card-body" style="margin-bottom:16px;">
+      <h3 style="font-size:14px;font-weight:700;margin-bottom:12px;">🔥 Most Read <span class="hci-tag">Recency</span></h3>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;"><span style="color:var(--highlight);font-weight:800;font-size:18px;">1</span><span style="font-size:13px;font-weight:600;line-height:1.3;">Travis Head's fastest IPL century stuns MI</span></div>
+        <div style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;"><span style="color:var(--highlight);font-weight:800;font-size:18px;">2</span><span style="font-size:13px;font-weight:600;line-height:1.3;">Parag vaping incident — full timeline</span></div>
+        <div style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;"><span style="color:var(--highlight);font-weight:800;font-size:18px;">3</span><span style="font-size:13px;font-weight:600;line-height:1.3;">IPL playoff race — who's in, who's out?</span></div>
+        <div style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;"><span style="color:var(--highlight);font-weight:800;font-size:18px;">4</span><span style="font-size:13px;font-weight:600;line-height:1.3;">Kohli's return to form — by the numbers</span></div>
+        <div style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;"><span style="color:var(--highlight);font-weight:800;font-size:18px;">5</span><span style="font-size:13px;font-weight:600;line-height:1.3;">Santner ruled out with shoulder injury</span></div>
+      </div>
+    </div>
+    <div class="card card-body">
+      <h3 style="font-size:14px;font-weight:700;margin-bottom:12px;">📱 Quick Links</h3>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <a href="standings.html" style="font-size:13px;color:var(--accent);font-weight:600;"><i class="fas fa-table"></i> Points Table</a>
+        <a href="schedule.html" style="font-size:13px;color:var(--accent);font-weight:600;"><i class="fas fa-calendar"></i> Schedule</a>
+        <a href="player.html" style="font-size:13px;color:var(--accent);font-weight:600;"><i class="fas fa-chart-bar"></i> Orange Cap</a>
+        <a href="player.html" style="font-size:13px;color:var(--accent);font-weight:600;"><i class="fas fa-bowling-ball"></i> Purple Cap</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</main>
+
+<footer style="margin-top:40px;"><div class="container"><div class="footer-bottom"><span>© 2026 CricPulse</span><div class="social-icons"><div class="social-icon"><i class="fab fa-twitter"></i></div><div class="social-icon"><i class="fab fa-youtube"></i></div></div></div></div></footer>
+<div id="toast" class="toast" role="status" aria-live="polite"><i class="fas fa-check-circle" style="color:var(--accent)"></i><span class="toast-msg"></span><button class="undo-btn" style="display:none">Undo</button></div>
+<script src="js/app.js"></script>
+<script>
+function filterNews(el, cat) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  showToast('Showing: ' + (cat === 'all' ? 'All News' : cat.toUpperCase()));
+}
+</script>
+</body>
+</html>

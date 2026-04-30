@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search - CricPulse</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+.search-hero { background:linear-gradient(135deg,#0A1628,#1C3454);padding:48px 0;color:#fff;text-align:center; }
+.search-box { max-width:600px;margin:0 auto;position:relative; }
+.search-box input { width:100%;padding:16px 24px 16px 52px;border-radius:var(--radius-full);font-size:16px;background:rgba(255,255,255,0.12);color:#fff;border:2px solid rgba(255,255,255,0.15);transition:all 0.2s; }
+.search-box input:focus { background:rgba(255,255,255,0.2);border-color:var(--accent); }
+.search-box input::placeholder { color:rgba(255,255,255,0.4); }
+.search-box .si { position:absolute;left:20px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.5);font-size:18px; }
+.filter-chip { display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:100px;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.2s;border:1.5px solid var(--border);background:var(--card);color:var(--text); }
+.filter-chip:hover,.filter-chip.active { background:var(--accent);color:#fff;border-color:var(--accent); }
+.filter-chip .remove { font-size:10px;opacity:0.7; }
+.result-card { display:flex;align-items:center;gap:16px;padding:16px;cursor:pointer; }
+.result-icon { width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;flex-shrink:0; }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="navbar"><div class="nav-top"><a href="index.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-cricket-bat-ball"></i></div>Cric<span>Pulse</span></a><div class="nav-search"><i class="fas fa-search search-icon"></i><input type="search" placeholder="Search..." aria-label="Search"><div id="search-suggestions" style="display:none;position:absolute;top:100%;left:0;right:0;background:var(--card);border-radius:0 0 12px 12px;box-shadow:var(--shadow-hover);z-index:100;"></div></div><div class="nav-actions"><button class="nav-action" onclick="toggleTheme()"><i class="fas fa-moon"></i><span>Theme</span></button><a href="help.html" class="nav-action"><i class="fas fa-question-circle"></i><span>Help</span></a></div></div>
+<div class="nav-menu"><a href="index.html" class="nav-link live-link">🏏 Live</a><a href="schedule.html" class="nav-link">Schedule</a><a href="news.html" class="nav-link">News</a><a href="standings.html" class="nav-link">Standings</a><a href="videos.html" class="nav-link">Videos</a><a href="fantasy.html" class="nav-link">Fantasy</a></div></nav>
+
+<main id="main">
+<!-- Search Hero - Fitts' Law (large target), Recognition over Recall -->
+<section class="search-hero">
+  <h1 style="font-size:32px;font-weight:900;margin-bottom:8px;">🔍 Search CricPulse</h1>
+  <p style="color:rgba(255,255,255,0.6);margin-bottom:24px;font-size:14px;">Find players, teams, matches, news and more</p>
+  <div class="search-box">
+    <i class="fas fa-search si"></i>
+    <input type="search" id="page-search" placeholder="Try 'Virat Kohli' or 'IPL 2026 schedule'..." aria-label="Search CricPulse" autofocus oninput="doSearch(this.value)">
+  </div>
+  <span class="hci-tag" style="margin-top:12px;">Fitts' Law: Large search target</span>
+  <span class="hci-tag">Nielsen H6: Recognition over Recall</span>
+</section>
+
+<div class="container" style="padding-top:24px;">
+
+<!-- Filter Chips - Hick's Law (progressive filtering) -->
+<div style="margin-bottom:20px;">
+  <span style="font-size:12px;font-weight:700;color:var(--text-muted);margin-right:8px;">FILTER:</span>
+  <span class="filter-chip active" onclick="toggleFilter(this)"><i class="fas fa-globe"></i> All</span>
+  <span class="filter-chip" onclick="toggleFilter(this)"><i class="fas fa-user"></i> Players</span>
+  <span class="filter-chip" onclick="toggleFilter(this)"><i class="fas fa-users"></i> Teams</span>
+  <span class="filter-chip" onclick="toggleFilter(this)"><i class="fas fa-cricket-bat-ball"></i> Matches</span>
+  <span class="filter-chip" onclick="toggleFilter(this)"><i class="fas fa-newspaper"></i> News</span>
+  <span class="filter-chip" onclick="toggleFilter(this)"><i class="fas fa-video"></i> Videos</span>
+  <span class="hci-tag">Hick's Law</span>
+</div>
+
+<!-- Recent Searches - Shneiderman R8 (reduce memory load) -->
+<div id="recent-section" style="margin-bottom:28px;">
+  <h2 style="font-size:15px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;"><i class="fas fa-clock" style="color:var(--text-muted);"></i> Recent Searches <span class="hci-tag">Shneiderman R8: Reduce Memory</span></h2>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;">
+    <span class="filter-chip" onclick="document.getElementById('page-search').value='Virat Kohli';doSearch('Virat Kohli')">Virat Kohli <span class="remove">✕</span></span>
+    <span class="filter-chip" onclick="document.getElementById('page-search').value='IPL 2026';doSearch('IPL 2026')">IPL 2026 <span class="remove">✕</span></span>
+    <span class="filter-chip" onclick="document.getElementById('page-search').value='CSK vs MI';doSearch('CSK vs MI')">CSK vs MI <span class="remove">✕</span></span>
+    <span class="filter-chip" onclick="document.getElementById('page-search').value='Points Table';doSearch('Points Table')">Points Table <span class="remove">✕</span></span>
+  </div>
+</div>
+
+<!-- Trending Searches - Social Proof -->
+<div id="trending-section" style="margin-bottom:28px;">
+  <h2 style="font-size:15px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px;"><i class="fas fa-fire" style="color:var(--highlight);"></i> Trending <span class="hci-tag">Social Proof</span></h2>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;">
+    <span class="filter-chip" onclick="document.getElementById('page-search').value='Travis Head century';doSearch('Travis Head')">🔥 Travis Head century</span>
+    <span class="filter-chip" onclick="document.getElementById('page-search').value='Riyan Parag';doSearch('Riyan Parag')">🔥 Riyan Parag</span>
+    <span class="filter-chip" onclick="document.getElementById('page-search').value='SRH winning streak';doSearch('SRH')">🔥 SRH winning streak</span>
+    <span class="filter-chip" onclick="document.getElementById('page-search').value='GT vs RCB';doSearch('GT vs RCB')">🔥 GT vs RCB live</span>
+  </div>
+</div>
+
+<!-- Search Results -->
+<div id="search-results" style="display:none;">
+  <h2 style="font-size:15px;font-weight:700;margin-bottom:14px;" id="results-title">Results</h2>
+  <div style="display:flex;flex-direction:column;gap:10px;" id="results-list">
+    <a href="player.html" class="card result-card"><div class="result-icon" style="background:linear-gradient(135deg,#C41E3A,#FF4500)"><i class="fas fa-user"></i></div><div style="flex:1;"><div style="font-size:14px;font-weight:700;">Virat Kohli</div><div style="font-size:12px;color:var(--text-muted);">Player • India • RCB</div></div><i class="fas fa-chevron-right" style="color:var(--text-light);"></i></a>
+    <a href="match-detail.html" class="card result-card"><div class="result-icon" style="background:linear-gradient(135deg,#00C853,#00963F)"><i class="fas fa-cricket-bat-ball"></i></div><div style="flex:1;"><div style="font-size:14px;font-weight:700;">GT vs RCB — 42nd Match (LIVE)</div><div style="font-size:12px;color:var(--text-muted);">Match • IPL 2026 • Today</div></div><i class="fas fa-chevron-right" style="color:var(--text-light);"></i></a>
+    <a href="standings.html" class="card result-card"><div class="result-icon" style="background:linear-gradient(135deg,#3498DB,#2980B9)"><i class="fas fa-trophy"></i></div><div style="flex:1;"><div style="font-size:14px;font-weight:700;">IPL 2026 Points Table</div><div style="font-size:12px;color:var(--text-muted);">Standings • Updated today</div></div><i class="fas fa-chevron-right" style="color:var(--text-light);"></i></a>
+    <a href="news.html" class="card result-card"><div class="result-icon" style="background:linear-gradient(135deg,#E74C3C,#C0392B)"><i class="fas fa-newspaper"></i></div><div style="flex:1;"><div style="font-size:14px;font-weight:700;">Kohli's return to form — stats breakdown</div><div style="font-size:12px;color:var(--text-muted);">News • 1.5M views</div></div><i class="fas fa-chevron-right" style="color:var(--text-light);"></i></a>
+    <a href="videos.html" class="card result-card"><div class="result-icon" style="background:linear-gradient(135deg,#F4A261,#E76F51)"><i class="fas fa-play"></i></div><div style="flex:1;"><div style="font-size:14px;font-weight:700;">Kohli's best IPL shots — video compilation</div><div style="font-size:12px;color:var(--text-muted);">Video • 5:23</div></div><i class="fas fa-chevron-right" style="color:var(--text-light);"></i></a>
+  </div>
+</div>
+
+<!-- No Results State - Nielsen H9 (Error Recovery) -->
+<div id="no-results" style="display:none;text-align:center;padding:48px 0;">
+  <div style="font-size:48px;margin-bottom:16px;">🏏</div>
+  <h3 style="font-size:18px;font-weight:700;margin-bottom:8px;">No results found</h3>
+  <p style="font-size:14px;color:var(--text-muted);margin-bottom:16px;">Try different keywords or browse our suggestions</p>
+  <div style="display:flex;gap:10px;justify-content:center;">
+    <a href="index.html" class="btn btn-primary"><i class="fas fa-home"></i> Home</a>
+    <a href="standings.html" class="btn btn-outline"><i class="fas fa-trophy"></i> Standings</a>
+  </div>
+  <span class="hci-tag" style="margin-top:12px;">Nielsen H9: Error Recovery</span>
+</div>
+
+</div>
+</main>
+
+<footer style="margin-top:40px;"><div class="container"><div class="footer-bottom"><span>© 2026 CricPulse</span><div class="social-icons"><div class="social-icon"><i class="fab fa-twitter"></i></div><div class="social-icon"><i class="fab fa-youtube"></i></div></div></div></div></footer>
+<div id="toast" class="toast" role="status" aria-live="polite"><i class="fas fa-check-circle" style="color:var(--accent)"></i><span class="toast-msg"></span><button class="undo-btn" style="display:none">Undo</button></div>
+<script src="js/app.js"></script>
+<script>
+function doSearch(val) {
+  const q = val.trim().toLowerCase();
+  if (q.length < 1) {
+    document.getElementById('search-results').style.display = 'none';
+    document.getElementById('no-results').style.display = 'none';
+    document.getElementById('recent-section').style.display = '';
+    document.getElementById('trending-section').style.display = '';
+    return;
+  }
+  document.getElementById('recent-section').style.display = 'none';
+  document.getElementById('trending-section').style.display = 'none';
+  // Simulate search
+  const hasResults = ['virat','kohli','ipl','gt','rcb','mi','csk','srh','points','table','head','travis','parag','bumrah','schedule'].some(k => q.includes(k));
+  document.getElementById('search-results').style.display = hasResults ? '' : 'none';
+  document.getElementById('no-results').style.display = hasResults ? 'none' : '';
+  document.getElementById('results-title').textContent = 'Results for "' + val.trim() + '"';
+}
+function toggleFilter(el) {
+  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  showToast('Filter: ' + el.textContent.trim());
+}
+// Auto-search from URL
+const params = new URLSearchParams(window.location.search);
+if (params.get('q')) { document.getElementById('page-search').value = params.get('q'); doSearch(params.get('q')); }
+</script>
+</body>
+</html>

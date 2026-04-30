@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Match Schedule - CricPulse</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+<nav class="navbar"><div class="nav-top"><a href="index.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-cricket-bat-ball"></i></div>Cric<span>Pulse</span></a><div class="nav-search"><i class="fas fa-search search-icon"></i><input type="search" placeholder="Search..." aria-label="Search"><div id="search-suggestions" style="display:none;position:absolute;top:100%;left:0;right:0;background:var(--card);border-radius:0 0 12px 12px;box-shadow:var(--shadow-hover);z-index:100;"></div></div><div class="nav-actions"><button class="nav-action" onclick="toggleTheme()"><i class="fas fa-moon"></i><span>Theme</span></button><a href="help.html" class="nav-action"><i class="fas fa-question-circle"></i><span>Help</span></a></div></div>
+<div class="nav-menu"><a href="index.html" class="nav-link live-link">🏏 Live</a><a href="schedule.html" class="nav-link active">Schedule</a><a href="news.html" class="nav-link">News</a><a href="standings.html" class="nav-link">Standings</a><a href="videos.html" class="nav-link">Videos</a><a href="fantasy.html" class="nav-link">Fantasy</a></div></nav>
+
+<main id="main">
+<div class="container">
+<div class="breadcrumbs"><a href="index.html">Home</a><span class="sep">›</span><span>Schedule</span></div>
+
+<div class="section-header" style="margin-top:8px;">
+  <div><h1 class="section-title">📅 Match Schedule <span class="hci-tag">Gestalt Proximity</span><span class="hci-tag">Learnability</span></h1><p class="section-sub">Upcoming and recent matches grouped by date</p></div>
+</div>
+
+<!-- Series Filter - Hick's Law -->
+<div class="tabs" style="margin-bottom:24px;">
+  <div class="tab active">All Series</div>
+  <div class="tab" onclick="showToast('Filtering: IPL 2026')">IPL 2026</div>
+  <div class="tab" onclick="showToast('Filtering: International')">International</div>
+  <div class="tab" onclick="showToast('Filtering: T20 Leagues')">T20 Leagues</div>
+  <div class="tab" onclick="showToast('Filtering: Women')">Women's</div>
+</div>
+<span class="hci-tag">Hick's Law: Filter reduces choices</span>
+
+<!-- Today's Matches - Proximity grouping by date -->
+<div style="margin-top:20px;">
+  <h2 style="font-size:16px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px;">
+    <span style="background:var(--accent);color:#fff;padding:3px 12px;border-radius:100px;font-size:11px;font-weight:700;">TODAY</span> April 30, 2026
+  </h2>
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div class="match-card live" onclick="location='match-detail.html'">
+      <div class="match-header"><span>42nd Match • IPL 2026 • Ahmedabad</span><span class="match-status status-live">● LIVE</span></div>
+      <div class="match-body">
+        <div class="team-row"><div class="team-info"><div class="team-logo" style="background:linear-gradient(135deg,#1C3879,#607EAA)">GT</div><span class="team-name">Gujarat Titans</span></div><div><span class="team-score">186/4</span><span class="team-overs">(16.2)</span></div></div>
+        <div class="team-row"><div class="team-info"><div class="team-logo" style="background:linear-gradient(135deg,#C41E3A,#FF4500)">RCB</div><span class="team-name">Royal Challengers</span></div><div><span class="team-score">204/6</span><span class="team-overs">(20)</span></div></div>
+      </div>
+      <div class="match-result">GT need 19 from 22 balls</div>
+    </div>
+    <div class="match-card" onclick="showToast('Match starts at 7:30 PM')">
+      <div class="match-header"><span>43rd Match • IPL 2026 • Chennai</span><span class="match-status status-upcoming">7:30 PM</span></div>
+      <div class="match-body">
+        <div class="team-row"><div class="team-info"><div class="team-logo" style="background:linear-gradient(135deg,#FCCA00,#F37021)">CSK</div><span class="team-name">Chennai Super Kings</span></div><div><span class="team-score" style="color:var(--text-muted)">—</span></div></div>
+        <div class="team-row"><div class="team-info"><div class="team-logo" style="background:linear-gradient(135deg,#004C93,#17479E)">DC</div><span class="team-name">Delhi Capitals</span></div><div><span class="team-score" style="color:var(--text-muted)">—</span></div></div>
+      </div>
+      <div class="match-result" style="color:var(--highlight);"><i class="fas fa-clock"></i> Starts in 3h 15m</div>
+    </div>
+  </div>
+</div>
+
+<!-- Tomorrow -->
+<div style="margin-top:28px;">
+  <h2 style="font-size:16px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px;">
+    <span style="background:var(--highlight);color:#fff;padding:3px 12px;border-radius:100px;font-size:11px;font-weight:700;">TOMORROW</span> May 1, 2026
+  </h2>
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div class="match-card" onclick="showToast('Match details coming soon')">
+      <div class="match-header"><span>44th Match • IPL 2026 • Kolkata</span><span class="match-status status-upcoming">3:30 PM</span></div>
+      <div class="match-body">
+        <div class="team-row"><div class="team-info"><div class="team-logo" style="background:linear-gradient(135deg,#3A225D,#7B3FA0)">KKR</div><span class="team-name">Kolkata Knight Riders</span></div><div><span class="team-score" style="color:var(--text-muted)">—</span></div></div>
+        <div class="team-row"><div class="team-info"><div class="team-logo" style="background:linear-gradient(135deg,#D71920,#ED1C24)">PBKS</div><span class="team-name">Punjab Kings</span></div><div><span class="team-score" style="color:var(--text-muted)">—</span></div></div>
+      </div>
+    </div>
+    <div class="match-card" onclick="showToast('Match details coming soon')">
+      <div class="match-header"><span>45th Match • IPL 2026 • Hyderabad</span><span class="match-status status-upcoming">7:30 PM</span></div>
+      <div class="match-body">
+        <div class="team-row"><div class="team-info"><div class="team-logo" style="background:linear-gradient(135deg,#FF6B00,#FF9933)">SRH</div><span class="team-name">Sunrisers Hyderabad</span></div><div><span class="team-score" style="color:var(--text-muted)">—</span></div></div>
+        <div class="team-row"><div class="team-info"><div class="team-logo" style="background:linear-gradient(135deg,#004BA0,#1A73E8)">MI</div><span class="team-name">Mumbai Indians</span></div><div><span class="team-score" style="color:var(--text-muted)">—</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Yesterday - Completed -->
+<div style="margin-top:28px;">
+  <h2 style="font-size:16px;font-weight:700;margin-bottom:14px;color:var(--text-muted);">April 29, 2026</h2>
+  <div style="display:flex;flex-direction:column;gap:12px;">
+    <div class="match-card" style="opacity:0.8;" onclick="location='match-detail.html'">
+      <div class="match-header"><span>41st Match • IPL 2026 • Mumbai</span><span class="match-status status-completed">COMPLETED</span></div>
+      <div class="match-body">
+        <div class="team-row"><div class="team-info"><div class="team-logo" style="background:linear-gradient(135deg,#004BA0,#1A73E8)">MI</div><span class="team-name">Mumbai Indians</span></div><div><span class="team-score">243/5</span><span class="team-overs">(20)</span></div></div>
+        <div class="team-row"><div class="team-info"><div class="team-logo" style="background:linear-gradient(135deg,#FF6B00,#FF9933)">SRH</div><span class="team-name">Sunrisers Hyderabad</span></div><div><span class="team-score" style="color:var(--accent)">249/4</span><span class="team-overs">(18.4)</span></div></div>
+      </div>
+      <div class="match-result">SRH won by 6 wickets</div>
+    </div>
+    <div class="match-card" style="opacity:0.8;" onclick="location='match-detail.html'">
+      <div class="match-header"><span>40th Match • IPL 2026 • Mohali</span><span class="match-status status-completed">COMPLETED</span></div>
+      <div class="match-body">
+        <div class="team-row"><div class="team-info"><div class="team-logo" style="background:linear-gradient(135deg,#D71920,#ED1C24)">PBKS</div><span class="team-name">Punjab Kings</span></div><div><span class="team-score">222/4</span><span class="team-overs">(20)</span></div></div>
+        <div class="team-row"><div class="team-info"><div class="team-logo" style="background:linear-gradient(135deg,#EA1A85,#254AA5)">RR</div><span class="team-name">Rajasthan Royals</span></div><div><span class="team-score" style="color:var(--accent)">228/4</span><span class="team-overs">(19.2)</span></div></div>
+      </div>
+      <div class="match-result">RR won by 6 wickets</div>
+    </div>
+  </div>
+</div>
+
+</div>
+</main>
+
+<footer style="margin-top:40px;"><div class="container"><div class="footer-bottom"><span>© 2026 CricPulse</span><div class="social-icons"><div class="social-icon"><i class="fab fa-twitter"></i></div><div class="social-icon"><i class="fab fa-youtube"></i></div></div></div></div></footer>
+<div id="toast" class="toast" role="status" aria-live="polite"><i class="fas fa-check-circle" style="color:var(--accent)"></i><span class="toast-msg"></span><button class="undo-btn" style="display:none">Undo</button></div>
+<script src="js/app.js"></script>
+</body>
+</html>
