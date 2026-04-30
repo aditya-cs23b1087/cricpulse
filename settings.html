@@ -29,7 +29,22 @@
 <body>
 <a href="#main" class="skip-link">Skip to main content</a>
 <nav class="navbar"><div class="nav-top"><a href="index.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-cricket-bat-ball"></i></div>Cric<span>Pulse</span></a><div class="nav-search"><i class="fas fa-search search-icon"></i><input type="search" placeholder="Search..." aria-label="Search"><div id="search-suggestions" style="display:none;position:absolute;top:100%;left:0;right:0;background:var(--card);border-radius:0 0 12px 12px;box-shadow:var(--shadow-hover);z-index:100;"></div></div><div class="nav-actions"><button class="nav-action" onclick="toggleTheme()"><i class="fas fa-moon"></i><span>Theme</span></button><a href="help.html" class="nav-action"><i class="fas fa-question-circle"></i><span>Help</span></a></div></div>
-<div class="nav-menu"><a href="index.html" class="nav-link live-link">🏏 Live</a><a href="schedule.html" class="nav-link">Schedule</a><a href="news.html" class="nav-link">News</a><a href="standings.html" class="nav-link">Standings</a><a href="videos.html" class="nav-link">Videos</a><a href="fantasy.html" class="nav-link">Fantasy</a></div></nav>
+<div class="nav-menu"><a href="index.html" class="nav-link live-link">🏏 Live</a><a href="schedule.html" class="nav-link">Schedule</a><a href="news.html" class="nav-link">News</a><a href="standings.html" class="nav-link">Standings</a><a href="videos.html" class="nav-link">Videos</a><a href="fantasy.html" class="nav-link">Fantasy</a>
+  <div class="nav-dropdown" style="position:relative; display:inline-block;">
+    <a href="#" class="nav-link" onclick="document.getElementById('more-menu').style.display = document.getElementById('more-menu').style.display === 'none' ? 'block' : 'none'; event.preventDefault();">More <i class="fas fa-chevron-down" style="font-size:10px;"></i></a>
+    <div id="more-menu" style="display:none; position:absolute; top:100%; right:0; background:var(--card); box-shadow:var(--shadow); border-radius:var(--radius); padding:8px 0; min-width:180px; z-index:1000; border:1px solid var(--border); text-align:left;">
+      <a href="search.html" style="display:block; padding:10px 16px; color:var(--text); text-decoration:none; font-size:14px;"><i class="fas fa-search" style="width:20px; color:var(--primary);"></i> Search</a>
+      <a href="fanzone.html" style="display:block; padding:10px 16px; color:var(--text); text-decoration:none; font-size:14px;"><i class="fas fa-users" style="width:20px; color:var(--primary);"></i> Fan Zone</a>
+      <a href="store.html" style="display:block; padding:10px 16px; color:var(--text); text-decoration:none; font-size:14px;"><i class="fas fa-shopping-cart" style="width:20px; color:var(--primary);"></i> Store</a>
+      <a href="tickets.html" style="display:block; padding:10px 16px; color:var(--text); text-decoration:none; font-size:14px;"><i class="fas fa-ticket-alt" style="width:20px; color:var(--primary);"></i> Tickets</a>
+      <a href="rankings.html" style="display:block; padding:10px 16px; color:var(--text); text-decoration:none; font-size:14px;"><i class="fas fa-chart-bar" style="width:20px; color:var(--primary);"></i> Rankings</a>
+      <a href="archive.html" style="display:block; padding:10px 16px; color:var(--text); text-decoration:none; font-size:14px;"><i class="fas fa-history" style="width:20px; color:var(--primary);"></i> Archives</a>
+      <a href="team.html" style="display:block; padding:10px 16px; color:var(--text); text-decoration:none; font-size:14px;"><i class="fas fa-flag" style="width:20px; color:var(--primary);"></i> Teams</a>
+      <div style="height:1px; background:var(--border); margin:8px 0;"></div>
+      <a href="premium.html" style="display:block; padding:10px 16px; color:#D4AF37; text-decoration:none; font-size:14px; font-weight:bold;"><i class="fas fa-crown" style="width:20px;"></i> Premium</a>
+      <a href="auth.html" style="display:block; padding:10px 16px; color:var(--text); text-decoration:none; font-size:14px;"><i class="fas fa-user" style="width:20px; color:var(--primary);"></i> Login</a>
+    </div>
+  </div></div></nav>
 
 <main id="main">
 <section style="background:linear-gradient(135deg,#0A1628,#1C3454);padding:40px 0;color:#fff;text-align:center;">
