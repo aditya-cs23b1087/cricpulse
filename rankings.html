@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICC Rankings - CricPulse</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<nav class="navbar"><div class="nav-top"><a href="index.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-cricket-bat-ball"></i></div>Cric<span>Pulse</span></a></div>
+<div class="nav-menu"><a href="index.html" class="nav-link">Live</a><a href="standings.html" class="nav-link">Standings</a><a href="rankings.html" class="nav-link active">Rankings</a></div></nav>
+<main>
+<section style="background:#0A1628; padding:40px 0; color:#fff;">
+  <div class="container">
+    <h1 style="font-size:32px; font-weight:900;">Global Rankings</h1>
+    <p style="opacity:0.7;">Official ICC Men's Player Rankings</p>
+  </div>
+</section>
+<div class="container" style="padding-top:24px;">
+  <div class="tabs" style="margin-bottom:24px;">
+    <button class="tab active">Test</button><button class="tab">ODI</button><button class="tab">T20I</button>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;">
+    <!-- Batting -->
+    <div class="card card-body">
+      <h2 style="font-size:18px; font-weight:800; margin-bottom:16px;">Top Batters</h2>
+      <table class="data-table">
+        <tr><th>Rank</th><th>Player</th><th>Rating</th></tr>
+        <tr style="background:var(--bg);"><td style="font-weight:bold; color:var(--accent);">1</td><td>Kane Williamson</td><td>864</td></tr>
+        <tr><td>2</td><td>Joe Root</td><td>859</td></tr>
+        <tr><td>3</td><td>Steve Smith</td><td>842</td></tr>
+      </table>
+    </div>
+    <!-- Bowling -->
+    <div class="card card-body">
+      <h2 style="font-size:18px; font-weight:800; margin-bottom:16px;">Top Bowlers</h2>
+      <table class="data-table">
+        <tr><th>Rank</th><th>Player</th><th>Rating</th></tr>
+        <tr style="background:var(--bg);"><td style="font-weight:bold; color:var(--accent);">1</td><td>R Ashwin</td><td>870</td></tr>
+        <tr><td>2</td><td>Josh Hazlewood</td><td>847</td></tr>
+        <tr><td>3</td><td>Kagiso Rabada</td><td>834</td></tr>
+      </table>
+    </div>
+    <!-- All Rounders -->
+    <div class="card card-body">
+      <h2 style="font-size:18px; font-weight:800; margin-bottom:16px;">Top All-Rounders</h2>
+      <table class="data-table">
+        <tr><th>Rank</th><th>Player</th><th>Rating</th></tr>
+        <tr style="background:var(--bg);"><td style="font-weight:bold; color:var(--accent);">1</td><td>Ravindra Jadeja</td><td>444</td></tr>
+        <tr><td>2</td><td>R Ashwin</td><td>322</td></tr>
+        <tr><td>3</td><td>Shakib Al Hasan</td><td>310</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+</main>
+</body>
+</html>
